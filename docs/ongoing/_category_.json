@@ -1,0 +1,14 @@
+{
+    "position": 2,
+    "label": "更新中的项目",
+    "collapsible": true,
+    "collapsed": false,
+    "className": "red",
+    "link": {
+      "type": "generated-index",
+      "title": "更新中的项目"
+    },
+    "customProps": {
+      "description": "这个目录下的是当前我正在学习的项目、书籍、目标等可能会持续更新一段时间的笔记。"
+    }
+  }

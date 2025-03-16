@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
@@ -29,8 +29,8 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'zh-cn',
-    locales: ['zh-cn','en'],
+    defaultLocale: 'zh-Hans',
+    locales: ['zh-Hans', 'en'],
   },
 
   presets: [
@@ -58,7 +58,7 @@ const config: Config = {
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          onUntruncatedBlogPosts: 'ignore',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -71,7 +71,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: 'Yew\'s Notes',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
@@ -79,14 +79,19 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'homeSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: '🟢首页',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/tags/unity', label: '🎮Unity', position: 'left' },
+        { to: '/tags/tech', label: '💻Coding', position: 'left' },
+        { to: '/tags/tutorial', label: 'Docusaurus', position: 'right' },
+        { to: '/tags/books', label: '📚读书', position: 'right' },
+        { to: '/writing', label: '✒️随笔', position: 'right' },
+        { to: '/ABOUTME', label: '关于我👦🏻', position: 'right' },
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
+          href: 'https://github.com/LeonYew-Ley/LeonYew-Ley.github.io',
+          label: 'Repo',
           position: 'right',
         },
       ],
@@ -95,46 +100,73 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: '计算机基础',
           items: [
             {
-              label: 'Tutorial',
-              to: '/docs/intro',
+              label: '数据结构与算法',
+              to: '/',
+            },
+            {
+              label: '计算机组成原理',
+              to: '/',
+            },
+            {
+              label: '操作系统',
+              to: '/',
+            },
+            {
+              label: '计算机网络',
+              to: '/',
             },
           ],
         },
         {
-          title: 'Community',
+          title: '游戏开发',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Unity与开发算法',
+              href: '/',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
+              label: 'C#',
+              href: '/',
+            }
+
           ],
         },
         {
-          title: 'More',
+          title: '闲书',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: '亲密关系',
+              href: '/',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
+              label: '自控力',
+              href: '/',
+            }
+
+          ],
+        },
+        {
+          title: '更多链接',
+          items: [
+            {
+            label: 'Unity Job 知识库',
+            href: 'https://www.kdocs.cn/l/cgzgeDQkjSj9',
+          },
+          {
+            label: 'Blog',
+            href: 'https://ley.asia/',
+          },
+          {
+            label: 'GitHub',
+            href: 'https://github.com/LeonYew-Ley',
+          }
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Yew's Notes, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
