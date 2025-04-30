@@ -3,7 +3,7 @@ id: Unity3D-1day-Part6
 ---
 
 > 标题：[Unity 3D] 1天开发闯关游戏_Part6_物理系统
-> 链接：[Yew's Blog](leonyew.fun)
+> 链接：[Yew's Blog](http://ley.asia/)
 > 日期：2024年1月10日
 
 <!-- 图库：https://cdn.jsdelivr.net/gh/LeonYew-SWPU/FileTem@main -->
@@ -47,5 +47,5 @@ public class PlayerPushObject : MonoBehaviour
 
 
 > 标题：[Unity 3D] 1天开发闯关游戏_Part6_物理系统
-> 链接：[Yew's Blog](leonyew.fun)
+> 链接：[Yew's Blog](http://ley.asia/)
 > 日期：2024年1月10日

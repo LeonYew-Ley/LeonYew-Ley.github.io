@@ -1,6 +1,6 @@
 {
     "position": 2,
-    "label": "更新中的项目",
+    "label": "🟢 更新中的项目",
     "collapsible": true,
     "collapsed": false,
     "className": "red",

@@ -3,7 +3,7 @@ id: Unity3D-1day-Part1
 ---
 
 > 标题：[Unity 3D] 1天开发闯关游戏_Part1_项目设置
-> 链接：[Yew's Blog](leonyew.fun)
+> 链接：[Yew's Blog](http://ley.asia/)
 > 日期：2024年1月8日
 
 <!-- 图库：https://cdn.jsdelivr.net/gh/LeonYew-SWPU/FileTem@main -->
@@ -113,6 +113,6 @@ OK，完全没问题，非常好 Unity，使我的项目运行！
 接下来就可以美滋滋的使用 URP 资产啦~
 
 > 标题：[Unity 3D] 1天开发闯关游戏_Part1_项目设置
-> 链接：[Yew's Blog](leonyew.fun)
+> 链接：[Yew's Blog](http://ley.asia/)
 > 日期：2024年1月8日
 

@@ -3,7 +3,7 @@ id: Unity3D-1day-Part3
 ---
 
 > 标题：[Unity 3D] 1天开发闯关游戏_Part3_动画部分
-> 链接：[Yew's Blog](leonyew.fun)
+> 链接：[Yew's Blog](http://ley.asia/)
 > 日期：2024年1月8日
 > 
 <!-- 图库：https://cdn.jsdelivr.net/gh/LeonYew-SWPU/FileTem@main -->
@@ -301,5 +301,5 @@ if (!isGrounded)
 <img alt="picture 64" src="https://cdn.jsdelivr.net/gh/LeonYew-SWPU/FileTem@main/imgs/2024/01/20240112-081401.gif" width="600" />  
 
 > 标题：[Unity 3D] 1天开发闯关游戏_Part3_动画部分
-> 链接：[Yew's Blog](leonyew.fun)
+> 链接：[Yew's Blog](http://ley.asia/)
 > 日期：2024年1月8日

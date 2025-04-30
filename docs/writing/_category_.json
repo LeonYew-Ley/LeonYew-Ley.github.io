@@ -1,0 +1,14 @@
+{
+    "label": "✒️ 随笔",
+    "position": 5,
+    "collapsible": true,
+    "collapsed": true,
+    "className": "red",
+    "link": {
+      "type": "generated-index",
+      "title": "随笔"
+    },
+    "customProps": {
+      "description": "随笔目录"
+    }
+  }

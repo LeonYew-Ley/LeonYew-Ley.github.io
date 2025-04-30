@@ -1,0 +1,10 @@
+{
+    "position": 4,
+    "label": "🤓 文艺",
+    "collapsible": true,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "文艺"
+    }
+}

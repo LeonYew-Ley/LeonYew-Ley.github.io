@@ -2,6 +2,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
@@ -32,7 +33,19 @@ const config: Config = {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans', 'en'],
   },
-
+  plugins: [
+    [
+      '@docusaurus/plugin-ideal-image',
+      {
+        quality: 2, // the quality of the optimized images
+        sizes: [50, 100, 300], // the sizes of the optimized images
+        max: 100, // max resized image's size.
+        min: 50, // min resized image's size. if original is lower, use that size.
+        steps: 2, // the max number of images generated between min and max (inclusive)
+        disableInDev: false,
+      },
+    ],
+  ],
   presets: [
     [
       'classic',
@@ -81,14 +94,11 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'homeSidebar',
           position: 'left',
-          label: '🟢首页',
+          label: '🏠首页',
         },
-        { to: '/tags/unity', label: '🎮Unity', position: 'left' },
-        { to: '/tags/tech', label: '💻Coding', position: 'left' },
-        { to: '/tags/tutorial', label: 'Docusaurus', position: 'right' },
-        { to: '/tags/books', label: '📚读书', position: 'right' },
-        { to: '/writing', label: '✒️随笔', position: 'right' },
+        { href: 'https://ley.asia', label: '👨🏻‍🦰Blog', position: 'left' },
         { to: '/ABOUTME', label: '关于我👦🏻', position: 'right' },
+        { href: 'https://www.kdocs.cn/l/cgzgeDQkjSj9', label: 'Unity Job', position: 'right' },
         {
           href: 'https://github.com/LeonYew-Ley/LeonYew-Ley.github.io',
           label: 'Repo',
@@ -152,17 +162,17 @@ const config: Config = {
           title: '更多链接',
           items: [
             {
-            label: 'Unity Job 知识库',
-            href: 'https://www.kdocs.cn/l/cgzgeDQkjSj9',
-          },
-          {
-            label: 'Blog',
-            href: 'https://ley.asia/',
-          },
-          {
-            label: 'GitHub',
-            href: 'https://github.com/LeonYew-Ley',
-          }
+              label: 'Unity Job 知识库',
+              href: 'https://www.kdocs.cn/l/cgzgeDQkjSj9',
+            },
+            {
+              label: 'Blog',
+              href: 'https://ley.asia/',
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/LeonYew-Ley',
+            }
           ],
         },
       ],

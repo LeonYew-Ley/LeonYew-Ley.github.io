@@ -1,5 +1,7 @@
-
-# 关于我👦🏻
+---
+sidebar_position: 6
+---
+# 👦🏻 关于我
 > ℹ️ 西南石油大学 | 游戏开发 | 数字媒体技术 | 25届毕业 | 男
 > 
 > 📮 [leonyew_ley@qq.com](mailto:leonyew_ley@qq.com)
