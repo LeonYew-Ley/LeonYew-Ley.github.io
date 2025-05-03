@@ -1,0 +1,10 @@
+{
+    "position": 3.5,
+    "label": "🔬 计算机科学",
+    "collapsible": true,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "计算机科学"
+    }
+}
