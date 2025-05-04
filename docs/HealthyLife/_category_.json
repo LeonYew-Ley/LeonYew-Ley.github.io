@@ -1,0 +1,10 @@
+{
+    "position": 4.5,
+    "label": "💪 生活&健康",
+    "collapsible": true,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "生活&健康"
+    }
+}
