@@ -7,9 +7,9 @@ import rehypeKatex from 'rehype-katex';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Yew\'s Notes Doc',
+  title: 'Yew\'s Notes',
   tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo_red.png',
 
   // Set the production url of your site here
   url: 'https://leonyew-ley.github.io/',
@@ -90,7 +90,7 @@ const config: Config = {
       title: 'Yew\'s Notes',
       logo: {
         alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo_red.png',
       },
       items: [
         {

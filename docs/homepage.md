@@ -20,13 +20,13 @@ sidebar_position: 1
 右侧包含每篇文章的各级标题，点击后即可跳转，这个功能不是Docsify自带的，是由Docsify插件改过来的，目前可能自适应页面还有点问题。但鉴于文档网站多半是大屏访问，所以出问题的场景还是比较少。
 
 ## 其他功能📦
-<!-- 生成table -->
-| 功能 | 说明 | 仓库 |
-| --- | --- | --- |
-| 文章翻页 | 在阅读一系列文章可以通过文章底部的切换页面按钮跳转 |[GitHub](https://github.com/imyelo/docsify-pagination)|
-<!-- | 字数统计 | 在文章开头展示本文字数和阅读时间 | [GitHub](https://github.com/827652549/docsify-count) | -->
-<!-- | 更新时间 | 展示更新时间，方便读者判断文章内容是否过时 |[GitHub](https://github.com/pfeak/docsify-updated)| -->
-<!-- | Bilibili渲染| 可以通过无需列表，启动bilibili解析 |[GitHub](https://github.com/denganliang/docsify-bilibili)| -->
+
+| 功能         | 说明                                               | 仓库                                                      |
+| ------------ | -------------------------------------------------- | --------------------------------------------------------- |
+| 文章翻页     | 在阅读一系列文章可以通过文章底部的切换页面按钮跳转 | [GitHub](https://github.com/imyelo/docsify-pagination)    |
+| 字数统计     | 在文章开头展示本文字数和阅读时间                   | [GitHub](https://github.com/827652549/docsify-count)      |
+| 更新时间     | 展示更新时间，方便读者判断文章内容是否过时         | [GitHub](https://github.com/pfeak/docsify-updated)        |
+| Bilibili渲染 | 可以通过无需列表，启动bilibili解析                 | [GitHub](https://github.com/denganliang/docsify-bilibili) |
 
 ## 联系我📧
 文档出现问题或者有其他任何问题，欢迎骚扰我😈
