@@ -114,6 +114,12 @@ InputSystem + Cinemachine + 视角变化脚本
 | 攻击/操作键 | 鼠标左键      |
 | 防御/放置键 | 鼠标右键      |
 
+#### InputSystem
+> 对于旧版输入系统 InputManager 的一层封装，按键与方法的映射通过InputSystem来管理，开发者只用在代码中写好固定的操作逻辑即可，与硬件的交互条件通过Unity Editor来配置，适合多设备适配。
+
+1. 创建Actions配置文件
+2. 在Player对象上添加Player Input组件来绑定Action和Unity Invoke事件
+
 #### 第三人称视角的实现
 1. 安装Cinemachine的Package
 2. 创建 Virtual Camera
