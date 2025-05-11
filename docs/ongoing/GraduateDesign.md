@@ -100,7 +100,11 @@ if /i "!choice!"=="start" (
     goto menu
 )
 ```
-
+#### 使用了HybridCLR与YooAsset之后的开发流程
+1. HybridCLR分析代码，生成热更DLL文件
+2. YooAsset将DLL文件和其他新增场景资源文件以及手动指定的文件夹下的文件打包
+3. 发布到资源服务器
+4. （玩家运行游戏，即可热更）
 ### 第三人称控制
 InputSystem + Cinemachine + 视角变化脚本
 #### 操作说明
@@ -125,8 +129,30 @@ InputSystem + Cinemachine + 视角变化脚本
 2. 创建 Virtual Camera
 3. 
 
+### 猫咪角色状态机
+#### Random Idle
+![picture 20250511214313](../../static/img/paste/20250511214313.gif)  
 
+![picture 20250511214811](../../static/img/paste/20250511214811.gif)
 
 
 ### 红点系统
 ![picture 20250505162425](../../static/img/paste/20250505162425.png)  
+
+## 参考链接
+- [【在逃猫咪】在水里发现这种猫科动物，千万别吸！](https://www.bilibili.com/video/BV1PYPWeVEgZ/)
+- [C#语言](https://www.youtube.com/watch?v=EgIbwCnQ680&list=PLZX6sKChTg8GQxnABqxYGX2zLs4Hfa4Ca)
+- [Unity获取盗版插件指北](https://wenjie.store/archives/unity%E8%8E%B7%E5%8F%96assetstore%E7%9B%97%E7%89%88%E6%8F%92%E4%BB%B6%E6%8C%87%E5%8C%97)
+### 资源/插件
+- [Animal Controller](https://malbersanimations.gitbook.io/animal-controller)
+  - [AC Tutorial](https://www.youtube.com/watch?v=q5tAmVpqSWA&list=PLh3LIrWD73czEsKkJK78BfLJ83KGKbDik)
+  - [Using the new input system with Malbers Animal Controller](https://www.youtube.com/watch?v=TjX3xN7qeZM&list=PLh3LIrWD73cwzPwbVLCXzPhCMaVPNVLK6)
+- [Spinal Animator](https://www.youtube.com/watch?v=LUUAkCHIfIU)
+  - [How to animate animals from cheap package more realistically](https://www.youtube.com/watch?v=fmp1t5Ug5CI)
+- [CSDN讲AC](https://blog.csdn.net/adsdasdasdahj/article/details/142670492)
+- Synty Studios模型 Low-Poly材质
+### 技术
+- [还在 Input.GetKey？一次搞懂 Unity 新版输入系统！【Unity 小技巧】](https://www.bilibili.com/video/BV1Pu57z3EKB/)
+- [Unity: CHARACTER CONTROLLER vs RIGIDBODY](https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483)
+- [Rigidbody实现玩家控制](https://medium.com/@tumo.yeh/unity3d一次就搞定角色移動-上-基礎移動-抖動避免-高度控制-菜鳥開發紀錄-1-a64998200119)
+
