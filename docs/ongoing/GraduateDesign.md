@@ -127,7 +127,6 @@ InputSystem + Cinemachine + 视角变化脚本
 #### 第三人称视角的实现
 1. 安装Cinemachine的Package
 2. 创建 Virtual Camera
-3. 
 
 ### 猫咪角色状态机
 #### Random Idle
@@ -135,9 +134,15 @@ InputSystem + Cinemachine + 视角变化脚本
 
 ![picture 20250511214811](../../static/img/paste/20250511214811.gif)
 
+#### 2D Freeform Cartesian Blend Tree
+Unity：左手坐标系
 
+#### Fall 与 根运动
+如果动画y轴有偏移，勾选 bake into pose
+#### Jump 状态
 ### 红点系统
 ![picture 20250505162425](../../static/img/paste/20250505162425.png)  
+
 
 ## 参考链接
 - [【在逃猫咪】在水里发现这种猫科动物，千万别吸！](https://www.bilibili.com/video/BV1PYPWeVEgZ/)
@@ -151,6 +156,8 @@ InputSystem + Cinemachine + 视角变化脚本
   - [How to animate animals from cheap package more realistically](https://www.youtube.com/watch?v=fmp1t5Ug5CI)
 - [CSDN讲AC](https://blog.csdn.net/adsdasdasdahj/article/details/142670492)
 - Synty Studios模型 Low-Poly材质
+- [代码打字练习SpeedCoder](https://www.speedcoder.net/lessons/csharp/1/)
+- [更好看的各种打字练习monkeytype](https://monkeytype.com/)
 ### 技术
 - [还在 Input.GetKey？一次搞懂 Unity 新版输入系统！【Unity 小技巧】](https://www.bilibili.com/video/BV1Pu57z3EKB/)
 - [Unity: CHARACTER CONTROLLER vs RIGIDBODY](https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483)
