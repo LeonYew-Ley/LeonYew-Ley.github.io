@@ -5,6 +5,12 @@
 ## 项目进度 TODO
 Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn/wiki/OWHHwKpxai6t9dklImFc7n8Yn1c?from=from_copylink)
 
+- [ ] 出水后shaking
+- [ ] NPC状态
+- [ ] 场景搭建
+- [ ] 任务制定
+
+
 ## 项目信息
 ### 选题目的和意义
 随着游戏形式的不断发展，非人类角色的游戏越来越受到玩家的欢迎。相比传统的人类视角，玩家逐渐倾向于从其他生物或拟人化角色的视角体验游戏内容，这不仅带来了新鲜感，更能激发玩家对游戏世界的好奇心与探索欲。近年来，《捣蛋鹅》、《动物森友会》和《动物派对》等游戏的成功便充分证明了这一趋势。
@@ -162,4 +168,4 @@ Unity：左手坐标系
 - [还在 Input.GetKey？一次搞懂 Unity 新版输入系统！【Unity 小技巧】](https://www.bilibili.com/video/BV1Pu57z3EKB/)
 - [Unity: CHARACTER CONTROLLER vs RIGIDBODY](https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483)
 - [Rigidbody实现玩家控制](https://medium.com/@tumo.yeh/unity3d一次就搞定角色移動-上-基礎移動-抖動避免-高度控制-菜鳥開發紀錄-1-a64998200119)
-
+- [Unity : 使用 Rider 进行调试，卡在 Reloading Domain](https://blog.csdn.net/weixin_44918974/article/details/142564439)
