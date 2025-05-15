@@ -6,18 +6,35 @@
 Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn/wiki/OWHHwKpxai6t9dklImFc7n8Yn1c?from=from_copylink)
 
 
-- [ ] 猫咪玩家控制
+- [x] 猫咪玩家控制
   - [ ] 出水后shaking
+  - [x] 捡起物品的功能
+  - [x] 第三人称相机设置
 - [ ] NPC状态
   - [ ] 动画：移动、赶走玩家
   - [ ] AI Nav
   - [ ] 驱赶玩家、复位道具
   - [ ] 不同NPC穿着：学生（3）、保安、路人(2)、小孩（1）
 - [ ] 场景搭建
+  - [ ] 天空盒
   - [ ] 图书馆
+  - [ ] 超市
   - [ ] 教学楼
   - [ ] 池塘
 - [ ] 任务制定
+  - [ ] 室外：新手任务场景
+    - [ ] 跑酷：向上跑、吓跑小鸟
+    - [ ] 拾取：把树下的果实捡回兜里
+    - [ ] 营养的一餐：鱼、苹果、饭团,放回野餐篮里
+  - [ ] 池塘边：
+    - [ ] 和玩家玩井字棋并胜利
+    - [ ] 抢到鸭子的帽子
+    - [ ] 把帽子送给清洁工
+  - [ ] 超市：
+    - [ ] 让学生被店主骂（偷走玩家的钱）
+    - [ ] 偷走鱼罐头
+  - [ ] 毕业：
+    - [ ] 出现在毕业照中
 - [ ] 游戏菜单Esc
   - [ ] 任务列表
   - [ ] 按键绑定
@@ -27,7 +44,7 @@ Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn
 - [ ] 主菜单
   - [ ] 存档选择
   - [ ] 设置
-
+- [ ] 存档系统
 
 ## 项目信息
 ### 选题目的和意义
@@ -187,3 +204,4 @@ Unity：左手坐标系
 - [Unity: CHARACTER CONTROLLER vs RIGIDBODY](https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483)
 - [Rigidbody实现玩家控制](https://medium.com/@tumo.yeh/unity3d一次就搞定角色移動-上-基礎移動-抖動避免-高度控制-菜鳥開發紀錄-1-a64998200119)
 - [Unity : 使用 Rider 进行调试，卡在 Reloading Domain](https://blog.csdn.net/weixin_44918974/article/details/142564439)
+- [Unity Universal Render Pipeline (URP) - Initial Setup](https://www.tomstephensondeveloper.co.uk/post/unity-universal-render-pipeline-urp-initial-setup)
