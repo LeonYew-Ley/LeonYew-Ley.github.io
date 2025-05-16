@@ -189,6 +189,18 @@ Unity：左手坐标系
 - [【在逃猫咪】在水里发现这种猫科动物，千万别吸！](https://www.bilibili.com/video/BV1PYPWeVEgZ/)
 - [C#语言](https://www.youtube.com/watch?v=EgIbwCnQ680&list=PLZX6sKChTg8GQxnABqxYGX2zLs4Hfa4Ca)
 - [Unity获取盗版插件指北](https://wenjie.store/archives/unity%E8%8E%B7%E5%8F%96assetstore%E7%9B%97%E7%89%88%E6%8F%92%E4%BB%B6%E6%8C%87%E5%8C%97)
+
+
+### 文献
+- [《2024年1-6月中国游戏产业报告》正式发布](https://www.cgigc.com.cn/details.html?id=08dcaca7-6753-4d1e-8938-f61cd1acd37b&tp=report)
+- https://www.yooasset.com/docs/Introduce
+- https://hybridclr.doc.code-philosophy.com/
+- [优雅的UML类图](https://refactoringguru.cn/design-patterns/abstract-factory)
+![picture 20250516125435](../../static/img/paste/20250516125435.png)  
+飞书可以画出类似上述的效果
+- 
+
+
 ### 资源/插件
 - [Animal Controller](https://malbersanimations.gitbook.io/animal-controller)
   - [AC Tutorial](https://www.youtube.com/watch?v=q5tAmVpqSWA&list=PLh3LIrWD73czEsKkJK78BfLJ83KGKbDik)
@@ -199,9 +211,57 @@ Unity：左手坐标系
 - Synty Studios模型 Low-Poly材质
 - [代码打字练习SpeedCoder](https://www.speedcoder.net/lessons/csharp/1/)
 - [更好看的各种打字练习monkeytype](https://monkeytype.com/)
+
+
 ### 技术
 - [还在 Input.GetKey？一次搞懂 Unity 新版输入系统！【Unity 小技巧】](https://www.bilibili.com/video/BV1Pu57z3EKB/)
 - [Unity: CHARACTER CONTROLLER vs RIGIDBODY](https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483)
 - [Rigidbody实现玩家控制](https://medium.com/@tumo.yeh/unity3d一次就搞定角色移動-上-基礎移動-抖動避免-高度控制-菜鳥開發紀錄-1-a64998200119)
 - [Unity : 使用 Rider 进行调试，卡在 Reloading Domain](https://blog.csdn.net/weixin_44918974/article/details/142564439)
 - [Unity Universal Render Pipeline (URP) - Initial Setup](https://www.tomstephensondeveloper.co.uk/post/unity-universal-render-pipeline-urp-initial-setup)
+- [升级自定义 Shader 以兼容 URP](https://docs.unity.cn/cn/Packages-cn/com.unity.render-pipelines.universal@14.1/manual/urp-shaders/birp-urp-custom-shader-upgrade-guide.html)
+
+## 类图
+### 事件系统
+```mermaid
+classDiagram
+    class GameManager {
+        + event Action~string~ OnTaskCompleted
+        + event Action~string~ OnItemStolen
+        + void TriggerTaskCompleted(string taskId)
+        + void TriggerItemStolen(string itemName)
+    }
+
+    class TaskSystem {
+        + void OnTaskCompleted(string taskId)
+        + void Subscribe()
+        + void Unsubscribe()
+    }
+
+    class UIManager {
+        + void OnTaskCompleted(string taskId)
+        + void OnItemStolen(string itemName)
+        + void Subscribe()
+        + void Unsubscribe()
+    }
+
+    class SaveSystem {
+        + void OnTaskCompleted(string taskId)
+        + void OnItemStolen(string itemName)
+        + void Subscribe()
+        + void Unsubscribe()
+    }
+
+    class NPCStateMachine {
+        + void OnItemStolen(string itemName)
+        + void Subscribe()
+        + void Unsubscribe()
+    }
+
+    GameManager --> TaskSystem : notify OnTaskCompleted
+    GameManager --> UIManager : notify OnTaskCompleted\nnotify OnItemStolen
+    GameManager --> SaveSystem : notify OnTaskCompleted\nnotify OnItemStolen
+    GameManager --> NPCStateMachine : notify OnItemStolen
+
+```
+
