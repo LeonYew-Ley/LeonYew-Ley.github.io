@@ -230,6 +230,7 @@ Unity：左手坐标系
 
 ## 类图
 ### 事件系统
+
 ```mermaid
 classDiagram
     class GameManager {
@@ -272,7 +273,8 @@ classDiagram
 ```
 
 ### 存档系统
-```mermaid
+
+```text
 classDiagram
     class SaveManager {
         - string saveFilePath
