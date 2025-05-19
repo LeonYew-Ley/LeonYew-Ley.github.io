@@ -10,6 +10,7 @@ Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn
   - [ ] 出水后shaking
   - [x] 捡起物品的功能
   - [x] 第三人称相机设置
+- [ ] 存档系统
 - [ ] NPC状态
   - [ ] 动画：移动、赶走玩家
   - [ ] AI Nav
@@ -42,9 +43,11 @@ Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn
   - [ ] 保存并退出到主菜单
   - [ ] 退出游戏
 - [ ] 主菜单
-  - [ ] 存档选择
+  - [ ] GPT重新画剪影
+  - [ ] （继续游戏）开始游戏
   - [ ] 设置
-- [ ] 存档系统
+    - [ ] 开启新游戏
+
 
 ## 项目信息
 ### 选题目的和意义
@@ -211,7 +214,9 @@ Unity：左手坐标系
 - Synty Studios模型 Low-Poly材质
 - [代码打字练习SpeedCoder](https://www.speedcoder.net/lessons/csharp/1/)
 - [更好看的各种打字练习monkeytype](https://monkeytype.com/)
-
+- [GIF转PNG图集](https://tool.koalahollow.com/gifconverter)
+- [Newtonsoft JSON Documentation](https://www.newtonsoft.com/json/help/html/Introduction.htm)
+- [CodeImgGenerator](https://www.ray.so/)
 
 ### 技术
 - [还在 Input.GetKey？一次搞懂 Unity 新版输入系统！【Unity 小技巧】](https://www.bilibili.com/video/BV1Pu57z3EKB/)
@@ -220,6 +225,8 @@ Unity：左手坐标系
 - [Unity : 使用 Rider 进行调试，卡在 Reloading Domain](https://blog.csdn.net/weixin_44918974/article/details/142564439)
 - [Unity Universal Render Pipeline (URP) - Initial Setup](https://www.tomstephensondeveloper.co.uk/post/unity-universal-render-pipeline-urp-initial-setup)
 - [升级自定义 Shader 以兼容 URP](https://docs.unity.cn/cn/Packages-cn/com.unity.render-pipelines.universal@14.1/manual/urp-shaders/birp-urp-custom-shader-upgrade-guide.html)
+- [ps动画制作方法视频：添加时间轴操作图层建立逐帧图片](https://www.bilibili.com/video/BV1nb41147r7/) 
+- [Unity场景Addictive加载导致的光照问题](https://blog.csdn.net/qq_26318597/article/details/120972465)
 
 ## 类图
 ### 事件系统
@@ -262,6 +269,47 @@ classDiagram
     GameManager --> UIManager : notify OnTaskCompleted\nnotify OnItemStolen
     GameManager --> SaveSystem : notify OnTaskCompleted\nnotify OnItemStolen
     GameManager --> NPCStateMachine : notify OnItemStolen
+```
 
+### 存档系统
+```mermaid
+classDiagram
+    class SaveManager {
+        - string saveFilePath
+        + SaveGame(PlayerController player, List~GameObject~ gameObjects)
+        + LoadGame(PlayerController player, List~GameObject~ gameObjects)
+    }
+    
+    class SaveData {
+        + float playerPositionX
+        + float playerPositionY
+        + float playerPositionZ
+        + float playerRotationX
+        + float playerRotationY
+        + float playerRotationZ
+        + List~ObjectState~ objectStates
+    }
+
+    class ObjectState {
+        + string objectName
+        + float positionX
+        + float positionY
+        + float positionZ
+        + bool isInteracted
+    }
+
+    class PlayerController {
+        + Transform transform
+    }
+
+    class Interactable {
+        + bool IsInteracted
+    }
+
+    SaveManager --> SaveData : 使用
+    SaveData --> ObjectState : 包含
+    SaveManager --> PlayerController : 依赖
+    SaveManager --> GameObject : 依赖
+    GameObject --> Interactable : 组合
 ```
 

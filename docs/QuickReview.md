@@ -103,3 +103,91 @@ sidebar_position: 1
   }
 }
 ```
+
+## Mermaid Diagram 语法
+```mermaid
+classDiagram
+    %% 定义类
+    class Person {
+        - name : String
+        - age : int
+        + getName() : String
+        + setName(name : String) : void
+    }
+
+    class Car {
+        - model : String
+        - year : int
+        + startEngine() : void
+        + stopEngine() : void
+    }
+
+    %% 定义关系
+    Person "1" --> "*" Car : owns
+    class Team {
+        - name : String
+        - players : List<Player>
+        + addPlayer(player : Player) : void
+    }
+
+    class Player {
+        - name : String
+        - position : String
+    }
+
+    %% 聚合关系
+    Team "1" o-- "*" Player : has
+
+    class House {
+        - address : String
+        - rooms : List<Room>
+    }
+
+    class Room {
+        - name : String
+        - size : int
+    }
+
+    %% 组合关系
+    House "1" *-- "*" Room : contains
+
+    class Animal {
+        + eat() : void
+        + sleep() : void
+    }
+
+    class Dog {
+        + bark() : void
+    }
+
+    class Cat {
+        + meow() : void
+    }
+
+    %% 泛化关系
+    Dog --|> Animal
+    Cat --|> Animal
+
+    %% 接口实现
+    class Drivable {
+        <<interface>>
+        + drive() : void
+    }
+
+    Car ..|> Drivable
+```
+### 可见性
+- `+` 表示公共（public）
+- `-` 表示私有（private）
+- `#` 表示受保护（protected）
+- `~` 表示包级（package）
+
+### 关系
+| **关系类型**              | **表示方式**            | **描述**                                               | **关键特性**                                                                                 |
+| ------------------------- | ----------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
+| **关联 (Association)**    | `Player ---owns--- Car` | 表示两个类之间的结构性关系，一个类知道另一个类的存在。 | - **多重性**：可以在连线两端标注（如 `1..*`）。<br> - **角色名**：可以标注类在关系中的角色。 |
+| **聚合 (Aggregation)**    | `Team ◇—— Player`       | 表示“整体-部分”关系，部分可以独立存在。                | 在连线靠近整体的一端用**空心菱形**标注。                                                     |
+| **组合 (Composition)**    | `House ◆—— Room`        | 一种更强的“整体-部分”关系，部分不能脱离整体单独存在。  | 在连线靠近整体的一端用**实心菱形**标注。                                                     |
+| **依赖 (Dependency)**     | `Order ···> Payment`    | 表示一个类依赖另一个类的定义或行为，通常是临时的关系。 | 用**虚线箭头**指向被依赖的类。                                                               |
+| **泛化 (Generalization)** | `Dog ---▷ Animal`       | 表示继承关系，子类继承父类的属性和方法。               | 用**实线箭头**指向父类。                                                                     |
+| **实现 (Realization)**    | `Car ···▶ IDrivable`    | 表示一个类实现了某个接口。                             | 用**虚线箭头**指向接口。                                                                     |
