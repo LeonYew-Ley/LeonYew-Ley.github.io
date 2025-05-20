@@ -20,7 +20,7 @@ npm run build
 ```bash
 npm run serve
 ```
-## MarkDown 额外语法
+## Docuruaus Markdown 额外语法
 ### 文本信息
 像这篇快速回顾一样，直接在侧边栏的文章，可以直接讲md文件放在docs文件夹下，并通过文档首部的`sidebar_position`来设置它在侧边栏的位置。
 
@@ -191,3 +191,9 @@ classDiagram
 | **依赖 (Dependency)**     | `Order ···> Payment`    | 表示一个类依赖另一个类的定义或行为，通常是临时的关系。 | 用**虚线箭头**指向被依赖的类。                                                          |
 | **泛化 (Generalization)** | `Dog ---▷ Animal`       | 表示继承关系，子类继承父类的属性和方法。               | 用**实线箭头**指向父类。                                                                |
 | **实现 (Realization)**    | `Car ···▶ IDrivable`    | 表示一个类实现了某个接口。                             | 用**虚线箭头**指向接口。                                                                |
+
+## MarkDown 基础语法
+
+| 语法       | 示例     |
+| ---------- | -------- |
+| `~~删除~~` | ~~删除~~ |
