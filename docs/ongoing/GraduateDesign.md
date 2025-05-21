@@ -5,7 +5,6 @@
 ## 项目进度 TODO
 Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn/wiki/OWHHwKpxai6t9dklImFc7n8Yn1c?from=from_copylink)
 
-
 - [x] 猫咪玩家控制
   - [ ] ~~出水后shaking~~
   - [x] 捡起物品的功能
@@ -28,7 +27,7 @@ Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn
   - [ ] 跑酷：向上跑、吓跑小鸟
   - [ ] 营养的一餐：鱼、苹果、饭团,放回野餐篮里
   - [ ] 和玩家玩井字棋并胜利
-  - [ ] 帮清洁工捡起帽子
+  - [ ] 帮路人捡起池塘中的帽子
   - [ ] 让学生被店主骂（偷走玩家的钱）
   - [ ] 偷走鱼罐头
   - [ ] 出现在毕业照中
@@ -226,91 +225,8 @@ Unity：左手坐标系
 - [升级自定义 Shader 以兼容 URP](https://docs.unity.cn/cn/Packages-cn/com.unity.render-pipelines.universal@14.1/manual/urp-shaders/birp-urp-custom-shader-upgrade-guide.html)
 - [ps动画制作方法视频：添加时间轴操作图层建立逐帧图片](https://www.bilibili.com/video/BV1nb41147r7/) 
 - [Unity场景Addictive加载导致的光照问题](https://blog.csdn.net/qq_26318597/article/details/120972465)
+- [word文档参考文献按引用顺序自动调整编号](https://maple.link/2022/05/09/word%E6%96%87%E6%A1%A3%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E6%8C%89%E5%BC%95%E7%94%A8%E9%A1%BA%E5%BA%8F%E8%87%AA%E5%8A%A8%E8%B0%83%E6%95%B4%E7%BC%96%E5%8F%B7/)
+- [【Low-Poly低多边形风格】使用Unity快速进行风格化的关卡设计-第二辑](https://www.bilibili.com/video/BV1TW411t7uu/)
 
-## 类图
-### 事件系统
-
-```mermaid
-classDiagram
-    class GameManager {
-        + event Action~string~ OnTaskCompleted
-        + event Action~string~ OnItemStolen
-        + void TriggerTaskCompleted(string taskId)
-        + void TriggerItemStolen(string itemName)
-    }
-
-    class TaskSystem {
-        + void OnTaskCompleted(string taskId)
-        + void Subscribe()
-        + void Unsubscribe()
-    }
-
-    class UIManager {
-        + void OnTaskCompleted(string taskId)
-        + void OnItemStolen(string itemName)
-        + void Subscribe()
-        + void Unsubscribe()
-    }
-
-    class SaveSystem {
-        + void OnTaskCompleted(string taskId)
-        + void OnItemStolen(string itemName)
-        + void Subscribe()
-        + void Unsubscribe()
-    }
-
-    class NPCStateMachine {
-        + void OnItemStolen(string itemName)
-        + void Subscribe()
-        + void Unsubscribe()
-    }
-
-    GameManager --> TaskSystem : notify OnTaskCompleted
-    GameManager --> UIManager : notify OnTaskCompleted\nnotify OnItemStolen
-    GameManager --> SaveSystem : notify OnTaskCompleted\nnotify OnItemStolen
-    GameManager --> NPCStateMachine : notify OnItemStolen
-```
-
-### 存档系统
-
-```text
-classDiagram
-    class SaveManager {
-        - string saveFilePath
-        + SaveGame(PlayerController player, List~GameObject~ gameObjects)
-        + LoadGame(PlayerController player, List~GameObject~ gameObjects)
-    }
-    
-    class SaveData {
-        + float playerPositionX
-        + float playerPositionY
-        + float playerPositionZ
-        + float playerRotationX
-        + float playerRotationY
-        + float playerRotationZ
-        + List~ObjectState~ objectStates
-    }
-
-    class ObjectState {
-        + string objectName
-        + float positionX
-        + float positionY
-        + float positionZ
-        + bool isInteracted
-    }
-
-    class PlayerController {
-        + Transform transform
-    }
-
-    class Interactable {
-        + bool IsInteracted
-    }
-
-    SaveManager --> SaveData : 使用
-    SaveData --> ObjectState : 包含
-    SaveManager --> PlayerController : 依赖
-    SaveManager --> GameObject : 依赖
-    GameObject --> Interactable : 组合
-```
-
+## Prompt
+请你按照GB/T 7714—2015标准格式，引用日期填写今日的日期，并依据以下信息生成参考文献引用文字。
