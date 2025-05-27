@@ -5,6 +5,9 @@
 ## 项目进度 TODO
 Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn/wiki/OWHHwKpxai6t9dklImFc7n8Yn1c?from=from_copylink)
 
+- [ ] 毕业论文
+  - [ ] 增加本章小结
+  - [ ] NPC控制
 - [x] 猫咪玩家控制
   - [ ] ~~出水后shaking~~
   - [x] 捡起物品的功能
