@@ -142,9 +142,6 @@ Unity：左手坐标系
 ## 项目进度 TODO
 Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn/wiki/OWHHwKpxai6t9dklImFc7n8Yn1c?from=from_copylink)
 
-- [ ] 毕业论文
-  - [ ] 增加本章小结
-  - [ ] NPC控制
 - [x] 猫咪玩家控制
   - [ ] ~~出水后shaking~~
   - [x] 关闭相机自动对准正面的功能
@@ -155,12 +152,13 @@ Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn
   - [x] 复位玩家、物品位置和旋转
   - [ ] 存储任务进度
 - [ ] NPC状态
-  - [ ] 动画：Idle、移动
-    - [ ] Idle：道具骨骼：阅读Synty的Documentation
-    - [ ] AI Nav
+  - [x] 动画：Idle、移动
+    - [x] Idle：道具骨骼：阅读Synty的Documentation
+    - [x] AI Nav
   - [ ] 驱赶玩家
   - [ ] 不同NPC穿着：学生（3）、保安、路人(2)、小孩（1）
 - [ ] 场景搭建
+  - [ ] 环境、路径规划
   - [ ] ~~天空盒~~
   - [x] 超市
     - [x] 学府超市
@@ -179,6 +177,7 @@ Markdown编写todo好难受，用飞书吧：[🔗链接](https://swpu.feishu.cn
   - [ ] 出现在毕业照中
 - [x] 游戏菜单Esc
   - [x] 任务列表
+  - [ ] 任务列表可滚动
   - [ ] ~~按键绑定~~
   - [ ] ~~音量调节~~
   - [ ] 音效开关
