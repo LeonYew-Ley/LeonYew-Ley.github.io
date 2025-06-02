@@ -56,8 +56,8 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
@@ -69,8 +69,8 @@ const config: Config = {
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -99,7 +99,8 @@ const config: Config = {
           position: 'left',
           label: '🏠首页',
         },
-        { href: 'https://ley.asia', label: '👨🏻‍🦰Blog', position: 'left' },
+        { to: 'blog', label: '✨New Blog', position: 'left' },
+        { href: 'https://ley.asia', label: '👨🏻‍🦰Old Blog', position: 'left' },
         { to: '/ABOUTME', label: '关于我👦🏻', position: 'right' },
         { href: 'https://www.kdocs.cn/l/cgzgeDQkjSj9', label: 'Unity Job', position: 'right' },
         {

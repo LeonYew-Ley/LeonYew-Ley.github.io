@@ -13,7 +13,17 @@ docusaurus:
   permalink: /docusaurus
   description: Docusaurus tag description
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+unity:
+  label: Unity
+  permalink: /unity
+  description: 和Unity有关的一些文章
+
+gamedev:
+  label: 游戏开发
+  permalink: /game-dev
+  description: 游戏开发相关知识
+
+bug:
+  label: bug
+  permalink: /bug
+  description: 遇见的一些Bug

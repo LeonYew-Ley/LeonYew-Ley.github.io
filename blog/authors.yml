@@ -5,12 +5,15 @@ leonyew:
   image_url: https://github.com/LeonYew-Ley.png
   socials:
     github: LeonYew-Ley
-    website: https://ley.asia
+    website: https://leonyew.space/
 
 huangbaiwei:
+  name: H-Bole
   title: Unity Developer
   url: https://github.com/H-Bole
   image_url: https://github.com/H-Bole.png
+  socials:
+    github: H-Bole
 
 slorber:
   name: Sébastien Lorber
