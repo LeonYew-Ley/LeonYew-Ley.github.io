@@ -10,4 +10,4 @@ tags: [google, collect]
 <!-- truncate -->
 很有趣啊，感觉很适合在桌面中间做挂件。
 
-![picture 20250605003613](../static/img/paste/20250605003613.png)  
+![picture 20250605004441](../static/img/paste/20250605004441.gif)  
