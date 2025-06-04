@@ -27,3 +27,13 @@ bug:
   label: bug
   permalink: /bug
   description: 遇见的一些Bug
+
+google:
+  label: "Google 谷歌"
+  permalink: /google
+  description: 和谷歌相关的东西
+
+collect:
+  label: 收藏
+  permalink: /collect
+  description: 一些有趣的收藏
