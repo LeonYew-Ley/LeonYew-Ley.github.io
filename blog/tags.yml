@@ -37,3 +37,13 @@ collect:
   label: 收藏
   permalink: /collect
   description: 一些有趣的收藏
+
+git:
+  label: git
+  permalink: /git
+  description: 讲述git的一些操作
+
+github:
+  label: github
+  permalink: /github
+  description: GitHub相关操作
