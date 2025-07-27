@@ -1,135 +1,82 @@
-# 《C#本质论》
-> 本文档将和《C#图解教程》的读书笔记融合
+# C# 语言笔记
+> 本文档结合[《C#语言入门讲解》](https://www.bilibili.com/video/BV1wx411K7rb)和《C# 12.0 本质论》提炼C#相关知识
 
-# C# 快速笔记
+## 前言/基础概念
+### 心法
+- 不要怕见到自己看不懂的东西
+- 要跟着操作，一遍遍练习，熟悉手里的东西
+### 程序
+程序的编写流程：
+编辑 -> 编译 -> 调试 -> 发布
 
-- static 关键字的变量是整个类都可以访问的，譬如声明了一个Cat类，通过 static int sum，在每次Cat声明时，都sum++，就可以统计出一共创建了多少个Cat对象。
-  譬如 static 方法，Console.WriteLine()，也是static方法，使用WriteLine并不需要创建一个Console实例，直接使用点方法即可。
+编程的学习路径
+- 纵向：语言、类库、框架
+- 横向：语言的各种应用，命令行、桌面应用、移动端、Web、游戏...
 
-- 编译：高级语言，汇编语言（操作寄存器），机器指令（010101）
+作业：
+> 用 WPF 完成一个 Hello World 程序，点击按钮之后，TextBox 显示 “Hello World!”
 
+### 项目
+#### Solution 与 Project
+- Solution是总的解决方案
+- Project是解决具体的某个问题
+  - Console
+  - WPF
+  - Windows Forms
+  - ...
+
+### 各种 Hello World
+- Console Application
+- WPF
+- Windows Forms
+## 基本元素
 - 关键字
+- 操作符（逻辑与或非等等）
+- 标识符（名字）
+  - 命名方法
+    - Pascal 法（C#常用）
+    - 驼峰法 thisIsAVariable（Java常用）
+- 标点符号
+- 文本（字面值）
+  - 整数：int, long(3L, 64bit)
+  - 实数：float(3f), double(3D)
+  - 字符：单引号，一个字符
+  - 字符串：双引号
+  - 布尔：
+  - 空 Null
+- 注释与空白
+  - 单行 `//`
+  - 多行 `/**/`
+  - VSCode 块注释快捷键：`Shift + Alt + A`（Windows/Linux），`Option + Shift + A`（Mac）
+  - VSCode 格式化快捷键：`Shift + Alt + F`（Windows/Linux），`Option + Shift + F`（Mac）
 
-- 变量命名，不能关键字，不能数字开头
 
-- 命名规范：变量名，小写开头，小驼峰intStr；类名，大写开头，大驼峰Console；
+## 类与对象
 
-- 存储单位：1b = 1 Bit，1Byte = 8bit，1k=1024，1KB = 1024B，进制2的10次方
-  
-  - int 4B，表示范围 $−2^{31} 到 2^{31}−1$
-  
-  - (无符号 unsigned)uint 4B 表示范围 $0到2^{32}-1$
-  
-  - float 4B，6-9位数字
-  
-  - double 8B，15-17位数字
-  
-  - bool
-  
-  - char 2B，单个字符
-  
-  - string
-    
-    - IndexOf("llo")，查找llo索引
-    
-    - Replace("a","b")，把a替换为b
-    
-    - Substring(first,second)，截取两个索引的子字符串
+### 对象与实例
+简单理解，对象就是实例。
 
-- 类型转换：
-  
-  - 显示类型转换：(int)
-  
-  - 隐式类型转换：float转double，不用打括号告诉类型
-  
-  - 字符串和数值转换`int valInt3 = int.Parse(valStr2);`
+精确理解，在编程语境下，对象通常指现实世界中的物体，实例通常指类（代码）实例化出来的一个Object（对象）。
 
-- 自增
-  
-  - ```csha```
-    int a = 4;
-    int b = a++; // b = 4, a = 5;
-    a = 4;
-    int b = ++a; // b = 5, a = 5;
-    
-    ```
-    
-    ```
-
-- 字符串格式化
-  
-  - ```csharp
-    string str1 = inputStr + "计算结果: " + result;
-    string str2 = $"{inputStr}的计算结果：{result}";
-    ```
-
-## 枚举 Enum
+### 静态成员与非静态成员
+核心区别是，这两个概念，成员属于“类”还是具体的“实例”
 
 ```csharp
-enum EGenderType{
-    Male = 0,
-    Female,//从上到下，依次为1，2，3
-    Other = 3 //本应该
-}
-
-switch(gender){
-    case EGenderType.Male: Console.WriteLine("男");break;
-    case EGenderType.Female: Console.WriteLine("女");break;
-    case EGenderType.Other: Console.WriteLine("朋友");break;    
+public class NewDreamer
+{
+    private string _fullName = "黎恩瑜";
+    public NewDreamer(string nickName)
+    {
+        this._fullName = nickName;
+    }
+    public string Introduce() => $"大家好，我是{_fullName}";
 }
 ```
 
-## 中断 Continue Break
+## 类型变量与方法
+数据类型：int、float、double...
 
-continue ：停止当前代码块，进入下一次循环。
+方法与函数：
+> 在 C 语言中叫做函数，后来发展为 C++，函数成为了类成员，后面遍开始叫做方法（成员函数）。
 
-break：停止当前循环，进入循环后的下一条语句。
-
-## 循环 Do While
-
-先执行语句块再进行条件判定
-
-```csharp
-int i = 0;
-do{
-    Console.WriteLine("i="+i);
-    i++;
-}while(i<3);
-
-//output: i = 0, i = 1, i = 2;
-```
-
-## ref 变量可以在函数内被修改
-
-```csharp
-int TestRef(int incVal, ref int decVal){
-    decVal--;
-    return incVal + 1;
-}
-
-int val1 = 0; int val2 = 3;
-
-int val3 = TestRef(val1, ref val2);
-// val2 = 2; val3 = 1;
-// 在变量面前添加 ref，传进去的是变量在内存中的地址。
-```
-
-# 类 Class
-
-const常量，运行时不能更改其值。
-
-构造函数，this.age 访问成员中的变量。
-
-成员函数
-
-属性Property，看起来像变量的函数
-
-## 结构体 Struct2
-
-# 面向对象
-# 语法基础
-# 协程
-# 委托
-# 事件
-# 泛型
-
+算法：循环与递归
