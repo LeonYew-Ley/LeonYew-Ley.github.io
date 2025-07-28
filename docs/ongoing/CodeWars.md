@@ -4,6 +4,16 @@
 > 
 > 刷好多题容易忘，还是开一篇文章记录一下
 
+## 字符串操作
+### 删去首位字符
+```csharp
+s.Substring(startindex, length);
+```
+### 字符串范围表达
+```
+public static string Remove_char(string s) => s[1..^1];
+```
+
 ## 250727 汉诺塔&位运算
 https://www.codewars.com/kata/534eb5ad704a49dcfa000ba6
 
@@ -28,5 +38,3 @@ Console.WriteLine($"位运算2的3次方：{1<<3}");
 ```
 位运算2的3次方：8
 ```
-
-## 250726 
