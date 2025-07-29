@@ -5,15 +5,20 @@
 > 刷好多题容易忘，还是开一篇文章记录一下
 
 ## 字符串操作
-### 删去首位字符
+### 删去首尾字符
 ```csharp
 s.Substring(startindex, length);
 ```
 ### 字符串范围表达
-```
+```csharp
 public static string Remove_char(string s) => s[1..^1];
 ```
 
+## 数组操作
+### 求平均数
+```csharp
+public static double FindAverage(double[] array) => array.Length == 0 ? 0 : array.Average();
+```
 ## 250727 汉诺塔&位运算
 https://www.codewars.com/kata/534eb5ad704a49dcfa000ba6
 
