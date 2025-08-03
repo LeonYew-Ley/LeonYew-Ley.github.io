@@ -44,3 +44,43 @@
     - PlayerInput
     - PlayerController.cs
       - PlayerPrefab(Player)
+## 道具系统与UI
+- Item
+  - enum ItemType
+  - GetSprite
+  - IsStackable
+- ItemAssets 道具资产
+  - pfItemWorld
+  - swordSprite
+  - healthPotionSprite
+  - ...
+- Inventory
+  - OnItemListChanged
+  - itemList
+  - useItemAction
+  - 
+  - Inventory(useItemAction)
+  - 
+  - AddItem
+  - RemoveItem
+  - UseItem
+  - GetItemList
+- Player
+  - UseItem
+  - new Inventory
+  - onTriggerEnter
+- ItemWorldSpawner
+  - public Item item;
+  - ItemInWorld.SpawnItemInWorld(this.pos,item)
+- ItemInWorld
+  - SpawnItemWorld
+    - Instantiate
+  - SetItem
+    - this.item = item
+  - GetItem
+  - DestroySelf
+- UI Inventory
+  - (SetPlayer)
+  - SetInventory
+  - Inventory_OnItemListChanged
+  - RefreshInventoryItems
