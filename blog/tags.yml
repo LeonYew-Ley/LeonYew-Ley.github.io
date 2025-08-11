@@ -118,11 +118,6 @@ ai:
   permalink: /ai
   description: 人工智能与模型应用
 
-ml:
-  label: 机器学习
-  permalink: /ml
-  description: 机器学习基础与实践
-
 reading:
   label: 阅读
   permalink: /reading
