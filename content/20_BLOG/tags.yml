@@ -1,0 +1,145 @@
+facebook:
+  label: Facebook
+  permalink: /facebook
+  description: Facebook tag description
+
+hello:
+  label: Hello
+  permalink: /hello
+  description: Hello tag description
+
+docusaurus:
+  label: Docusaurus
+  permalink: /docusaurus
+  description: Docusaurus tag description
+
+unity:
+  label: Unity
+  permalink: /unity
+  description: 和Unity有关的一些文章
+
+gamedev:
+  label: 游戏开发
+  permalink: /game-dev
+  description: 游戏开发相关知识
+
+bug:
+  label: bug
+  permalink: /bug
+  description: 遇见的一些Bug
+
+google:
+  label: "Google 谷歌"
+  permalink: /google
+  description: 和谷歌相关的东西
+
+collect:
+  label: 收藏
+  permalink: /collect
+  description: 一些有趣的收藏
+
+git:
+  label: git
+  permalink: /git
+  description: 讲述git的一些操作
+
+github:
+  label: github
+  permalink: /github
+  description: GitHub相关操作
+
+javascript:
+  label: JavaScript
+  permalink: /javascript
+  description: JavaScript 相关笔记
+
+typescript:
+  label: TypeScript
+  permalink: /typescript
+  description: TypeScript 使用与实践
+
+python:
+  label: Python
+  permalink: /python
+  description: Python 学习与脚本
+
+csharp:
+  label: C#
+  permalink: /csharp
+  description: C# 与 .NET 相关
+
+unity3d:
+  label: Unity3D
+  permalink: /unity3d
+  description: Unity3D 更底层或专项内容
+
+algorithm:
+  label: 算法
+  permalink: /algorithm
+  description: 数据结构与算法
+
+network:
+  label: 计算机网络
+  permalink: /network
+  description: 计网相关知识
+
+database:
+  label: 数据库
+  permalink: /database
+  description: 数据库与 SQL / NoSQL
+
+frontend:
+  label: 前端
+  permalink: /frontend
+  description: 前端通用技术
+
+backend:
+  label: 后端
+  permalink: /backend
+  description: 后端服务与架构
+
+devops:
+  label: DevOps
+  permalink: /devops
+  description: CI/CD 与运维自动化
+
+docker:
+  label: Docker
+  permalink: /docker
+  description: 容器与镜像管理
+
+linux:
+  label: Linux
+  permalink: /linux
+  description: Linux 命令与环境
+
+ai:
+  label: AI
+  permalink: /ai
+  description: 人工智能与模型应用
+
+reading:
+  label: 阅读
+  permalink: /reading
+  description: 读书笔记与书摘
+
+productivity:
+  label: 效率
+  permalink: /productivity
+  description: 学习与效率提升方法
+
+writing:
+  label: 写作
+  permalink: /writing
+  description: 写作练习与思考
+
+life:
+  label: 生活
+  permalink: /life
+  description: 日常记录与感悟
+
+fitness:
+  label: 健身
+  permalink: /fitness
+  description: 训练与健康
+
