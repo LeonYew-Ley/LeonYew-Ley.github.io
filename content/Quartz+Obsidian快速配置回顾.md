@@ -1,4 +1,3 @@
-![[Pasted image 20250816163955.png]]
 # Quartz
 ## 常用 npm 命令
 ```bash
@@ -42,21 +41,69 @@ description: 文章的简介，用于 Preview 的
 	- `[[#标签]]`
 	- `[[#项目/子标签]]`
 ### Callouts（提示框）
+Obsidian 支持的提示框有很多类型：
+`note`、`info`、`tip`、`success`
+`question`、`warning`、`failure`、`danger`
+`bug`、`example`、`quote`
+
 ```markdown
 > [!NOTE] 这是一个提示
 > 你可以写很多内容
 ```
+
 > [!NOTE] 这是一个提示
 > 你可以写很多内容
 ### 任务列表（Task List）
 ```markdown
 - [ ] 未完成任务
 - [x] 已完成任务
-- [-] 半完成任务
+- [/] 半完成任务
 ```
 - [ ] 未完成任务
 - [x] 已完成任务
-- [-] 半完成任务
+- [/] 半完成任务
+### LaTeX 数学公式符号
+```latex
+%% 内联 %%
+$E = mc^2$
+
+%% 占据整行 %%
+$$
+\int_0^1 x^2 dx
+$$
+```
+### 注释 & 转义字符
+```markdown
+%% 这是注释 %%
+\*不会变成斜体\*
+用 `\` 避免触发 Markdown 格式。
+```
+
+\*不会变成斜体\*
+
+## 基础 Markdown 语法
+### 富文本
+```markdown
+*斜体*   _斜体_
+**加粗**
+~~删除线~~
+```
+*斜体*   _斜体_
+**加粗**
+~~删除线~~
+
+### 调整图片大小
+```
+![[图片文件.png | 300]]
+```
+## 插件
+### Templator
+> 模板插件，模板位置：99_RES_private/tempaltes/
+### Various Complements
+> 自动补全插件，字典位置： 99_RES_private/VComplements/dict
+
 # 参考链接
 - [Quartz配置](https://quartz.jzhao.xyz/configuration) ^5996e4
-- 
+- https://zhuanlan.zhihu.com/p/19640496491
+- https://zhuanlan.zhihu.com/p/26095824336
+- https://quartz.jzhao.xyz/

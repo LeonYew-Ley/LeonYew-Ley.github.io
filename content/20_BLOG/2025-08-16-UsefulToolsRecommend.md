@@ -14,4 +14,12 @@
 - BandZip 解压压缩包
 ## Coding
 - CodeWars：代码刷题，根据生活场景出题
-- 
+
+## 字体 Fonts
+## 中文
+## 英文
+- DM Serif Display（标题）
+- Bricolage Grotesque（正文）
+- Biro Script（手写体）
+## 其他用途
+- JetBrains Mono（代码）

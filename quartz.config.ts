@@ -17,15 +17,24 @@ const config: QuartzConfig = {
     },
     locale: "zh-CN",
     baseUrl: "docs.leonyew.space/Quartz-Blog/",
-    ignorePatterns: ["private", "templates", ".obsidian"],
+    ignorePatterns: ["private", "templates", ".obsidian", "**/99_RES_private/**"],
     defaultDateType: "modified",
     theme: {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "Schibsted Grotesk",
-        body: "Source Sans Pro",
-        code: "IBM Plex Mono",
+        header: {
+          name: "DM Serif Display",
+          weights: [400],
+          includeItalic: false,
+        },
+        title: {
+          name: "DM Serif Display",
+          weights: [400],
+          includeItalic: false,
+        },
+        body: "Bricolage Grotesque",
+        code: "JetBrains Mono",
       },
       colors: {
         lightMode: {
