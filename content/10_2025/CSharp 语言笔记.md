@@ -1,6 +1,12 @@
 # C# 语言笔记
 > 本文档结合[《C#语言入门讲解》](https://www.bilibili.com/video/BV1wx411K7rb)和《C# 12.0 本质论》提炼C#相关知识
 
+
+## Inblox 零散知识
+**来自[[CodeWars| Code Wars]]**
+
+**其他零散记录**
+
 ## 前言/基础概念
 ### 心法
 - 不要怕见到自己看不懂的东西
