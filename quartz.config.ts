@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "zh-CN",
-    baseUrl: "docs.leonyew.space/Quartz-Blog/",
+    baseUrl: "blog.leonyew.space",
     ignorePatterns: ["private", "templates", ".obsidian", "**/99_RES_private/**"],
     defaultDateType: "modified",
     theme: {

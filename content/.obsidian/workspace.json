@@ -15,8 +15,8 @@
               "type": "markdown",
               "state": {
                 "file": "index.md",
-                "mode": "source",
-                "source": false
+                "mode": "preview",
+                "source": true
               },
               "pinned": true,
               "icon": "lucide-file",
@@ -53,8 +53,7 @@
               "title": "《原子习惯》"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -175,13 +174,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/《原子习惯》.md",
+                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "《原子习惯》 的大纲"
+              "title": "index 的大纲"
             }
           }
         ],
@@ -202,10 +201,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a4a440373395dbc6",
+  "active": "b7143089439f7185",
   "lastOpenFiles": [
-    "10_2025/2025.md",
     "10_2025/《原子习惯》.md",
+    "10_2025/2025.md",
     "10_2025/📖 极简读书笔记.md",
     "index.md",
     "Quartz + Obsidian 快速回顾.md"
