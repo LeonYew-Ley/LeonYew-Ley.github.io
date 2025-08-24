@@ -18,8 +18,13 @@
 ## 字体 Fonts
 ## 中文
 ## 英文
+### 阅读字体
 - DM Serif Display（标题）
 - Bricolage Grotesque（正文）
 - Biro Script（手写体）
+### 艺术/装饰字体
+- Rubik Dirt（粗体、磨砂、做旧）
+- Biro Script（手写体）
+- Slackey（海绵宝宝）
 ## 其他用途
 - JetBrains Mono（代码）
