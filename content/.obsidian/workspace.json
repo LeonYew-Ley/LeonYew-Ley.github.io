@@ -45,12 +45,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_2025/CS大法好👌.md",
+                "file": "10_2025/CSharp 语言笔记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CS大法好👌"
+              "title": "CSharp 语言笔记"
             }
           },
           {
@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -189,13 +189,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/《原子习惯》.md",
+                "file": "10_2025/CSharp 语言笔记.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "《原子习惯》 的大纲"
+              "title": "CSharp 语言笔记 的大纲"
             }
           }
         ],
@@ -217,11 +217,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "74b29106e6109759",
+  "active": "4c65cf093d3dcb00",
   "lastOpenFiles": [
-    "10_2025/2025.md",
-    "10_2025/《原子习惯》.md",
     "10_2025/CS大法好👌.md",
+    "10_2025/《原子习惯》.md",
+    "10_2025/2025.md",
     "10_2025/CSharp 语言笔记.md",
     "10_2025/Unity笔记.md",
     "10_2025/CodeWars.md",

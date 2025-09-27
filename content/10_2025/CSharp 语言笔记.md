@@ -87,6 +87,26 @@ public class NewDreamer
 
 [LINQ操作汇总 ](https://blog.csdn.net/lweiyue/article/details/129155467)
 
+## 过滤
+OfType
+```csharp
+// 将 listOfItems 中的 int 类型元素过滤出来
+return listOfItems.OfType<int>();
+```
+Where
+```csharp
+return listOfItems
+.Where(x => x.GetType() == typeof(int))
+.Select(x => (int)x);
+```
+## 强制类型转换
+Cast
+```csharp
+return listOfItems
+.Where(x => x is int)
+.Cast<int>();
+```
+Select
 # ----- CodeWars -----
 
 > 2025年7月27日 开始记录
