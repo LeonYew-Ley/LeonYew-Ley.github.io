@@ -83,6 +83,102 @@ public class NewDreamer
 
 算法：循环与递归
 
+# 语法
+## 一些初始化声明
+> 平常写代码的时候，声明变量完了，编辑器总是提示我这里可以 Quick Fix、那里也可以，导致我总是写着写着怀疑人生，搞得都不知道该如何声明变量了，所以在这里总结了一下。
+
+C# 中有几种变量，基本类型、对象类型、集合类型等等。
+
+```csharp
+// 基本类型 - 有默认值
+int number = 0;           // 或者 int number; (默认0)
+bool flag = false;        // 或者 bool flag; (默认false)
+string text = "";         // 或者 string text; (默认null)
+char ch = '\0';           // 或者 char ch; (默认'\0')
+
+/* 对象类型 */
+
+// 传统方式
+Person person = new Person();
+Person person2 = new Person("John", 25);
+// C# 9.0+ 目标类型推断
+Person person3 = new("John", 25);  // 编译器推断类型
+var person4 = new Person("John", 25);
+
+/* 集合类型 */
+
+// 传统方式
+List<int> numbers = new List<int>();
+List<int> numbers2 = new List<int> { 1, 2, 3, 4 };
+// C# 9.0+ 目标类型推断
+List<int> numbers3 = new() { 1, 2, 3, 4 };
+var numbers4 = new List<int> { 1, 2, 3, 4 };
+// C# 12+ 集合表达式
+List<int> numbers5 = [1, 2, 3, 4];  // 最新语法
+
+```
+
+主要区别在于集合类型和对象类型在不同版本标准的 C# 中的语法不同。
+
+对于集合类型，传统方式需要在 new 后面写出类型的类名、参数；C# 9.0 之后可以省略类名和参数，声明的内容（键值对）依旧使用 `{}` 花括号来表示（对象初始化器语法）；C# 12.0 之后，开始使用赋值初始化（索引器初始化器语法）
+
+字典初始化方式变化：
+```csharp
+// 传统方式
+
+Dictionary<string, int> dict = new Dictionary<string, int>();
+Dictionary<string, int> dict2 = new Dictionary<string, int>
+{
+    {"apple", 1},
+    {"banana", 2}
+};
+
+// C# 9.0+ 目标类型推断
+Dictionary<string, int> dict3 = new()
+{
+    {"apple", 1},
+    {"banana", 2}
+};
+
+// C# 12+ 集合表达式
+Dictionary<string, int> dict4 = new()
+{
+    ["apple"] = 1,
+    ["banana"] = 2
+};
+```
+
+集合初始化方式变化：
+```csharp
+// 传统方式
+List<int> numbers = new List<int>();
+List<int> numbers2 = new List<int> { 1, 2, 3, 4 };
+  
+// C# 9.0+ 目标类型推断
+List<int> numbers3 = new() { 1, 2, 3, 4 };
+var numbers4 = new List<int> { 1, 2, 3, 4 };
+  
+// C# 12+ 集合表达式
+List<int> numbers5 = [1, 2, 3, 4];  // 最新语法
+```
+## Char
+### char.GetNumericValue(x)
+> 获取字符 x 的数值
+
+## String
+### String 和 string
+两者使用上没什么区别，一个是类型名称，一个是关键字，在代码中两个都可以使用。
+
+string 是 C# 的关键字，不需要引用命名空间就可以使用（与 bool, int, char 保持一致，都是小写）。
+String 是类型名称（.NET Framework 的类型），需要引用命名空间 `using System` 才可以直接使用。
+string 在编译成 IL 语言之后，会被编译成 `Sytem.String`
+### string.Concat()
+> 连接字符串
+
+### string.Join()
+> string.Join(string separator, params string[] value)
+> 连接字符串，但是可以添加连接符
+
 # Linq
 
 [LINQ操作汇总 ](https://blog.csdn.net/lweiyue/article/details/129155467)
