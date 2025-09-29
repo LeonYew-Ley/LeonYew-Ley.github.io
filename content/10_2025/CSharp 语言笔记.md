@@ -164,6 +164,69 @@ var numbers4 = new List<int> { 1, 2, 3, 4 };
 // C# 12+ 集合表达式
 List<int> numbers5 = [1, 2, 3, 4];  // 最新语法
 ```
+## 条件判断：If()
+### 短路求值及一些 Trick 写法
+> 在 C# 中，逻辑运算符`&&`（逻辑与）和`||`（逻辑或）具有短路求值特性，这意味着当第一个操作数已经能确定整个表达式的结果时，第二个操作数不会被执行。
+
+**判空操作：避免空指针**
+```csharp
+// 判断 a、b 数组是否为空且长度是否相等，先进行判空操作，避免 a 或 b 为 null 的时候访问成员变量 Length 的时候报 NullReferenceException
+if (a == null || b == null || a.Length != b.Length)
+	return false;
+```
+
+**条件执行函数 & 条件赋值 & 替代TryCatch**
+条件执行函数、替代TryCatch
+```csharp
+isReady && DoSomething();
+// 等价于
+if (isReady) DoSomething();
+```
+
+**条件赋值**
+```csharp
+// 在 input 不为空且不为空字符串的时候才赋值，否则为 Default
+string name = input != null && input.Length > 0 ? input : "Default";
+
+// user 不为空才赋值，但布尔表达式需要 `&&` 两边都是布尔值，所以右边需要再判断一下 != null
+(user != null && (user.Name = "Leo") != null);
+```
+
+**循环提前结束**
+> 可以不用写 `break;`
+
+```csharp
+// 角色向目标点移动的逻辑（每帧更新）
+void MoveToTarget(Character character, Vector3 target)
+{
+    // 短路逻辑：
+    // 1. 先判断角色是否有效（未销毁）
+    // 2. 再判断是否到达目标点（未到达则继续循环）
+    // 3. 最后执行移动逻辑（只有前两个条件都满足才执行）
+    // MoveToWards 未在这里实现
+    while (character != null 
+           && !IsReachedTarget(character, target) 
+           && character.MoveTowards(target, Time.deltaTime)) 
+    {
+        // 循环体为空，所有逻辑在条件中通过短路求值完成
+        // 每帧等待一次更新（避免死循环阻塞主线程）
+        yield return null; 
+    }
+
+    // 移动结束后的处理
+    if (character != null)
+    {
+        character.PlayIdleAnimation();
+    }
+}
+
+// 检测是否到达目标点
+bool IsReachedTarget(Character character, Vector3 target)
+{
+    return Vector3.Distance(character.Position, target) < 0.1f;
+}
+```
+
 ## Char
 ### char.GetNumericValue(x)
 > 获取字符 x 的数值
@@ -182,6 +245,21 @@ string 在编译成 IL 语言之后，会被编译成 `Sytem.String`
 > string.Join(string separator, params string[] value)
 > 连接字符串，但是可以添加连接符
 
+## Array 数组
+### a.SequenceEqual(b) 判断两个序列是否相等
+- 要求两个序列的**元素数量必须相同**，否则直接返回 `false`。
+- 要求**每个位置的元素必须相等**（按顺序一一对比），顺序不同则判定为不相等。
+- 对于值类型（如 `int`、`double`），直接比较值是否相等。
+- 对于引用类型（如自定义类），默认比较引用地址，若需比较对象内容，需重写 `Equals` 方法或使用 `IEqualityComparer<T>` 自定义比较规则。
+
+**与 `Equals` 或 `==` 的区别：**
+- 数组 / 列表的 `Equals` 或 `==` 比较的是**引用是否相同**（是否为同一个对象），而 `SequenceEqual` 比较的是**内容是否相同**。
+```csharp
+int[] arr1 = { 1, 2 };
+int[] arr2 = { 1, 2 };
+
+Console.WriteLine(arr1 == arr2); // false（引用不同） Console.WriteLine(arr1.SequenceEqual(arr2)); // true（内容相同）
+```
 # Linq
 
 [LINQ操作汇总 ](https://blog.csdn.net/lweiyue/article/details/129155467)
@@ -206,6 +284,46 @@ return listOfItems
 .Cast<int>();
 ```
 Select
+
+## 操作
+### 排序
+OrderBy/OrderByDescending，按一定规则升序/降序排序
+```csharp
+// 对整数数组升序排序
+int[] numbers = {3, 1, 4, 1, 5, 9, 2, 6};
+var sorted = numbers.OrderBy(x => x).ToArray();
+// 结果: [1, 1, 2, 3, 4, 5, 6, 9]
+
+// 对字符串数组按长度排序
+string[] words = {"apple", "pie", "banana", "cat"};
+var byLength = words.OrderBy(x => x.Length).ToArray();
+// 结果: ["pie", "cat", "apple", "banana"]
+```
+
+对象排序
+```csharp
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+    public string City { get; set; }
+}
+var people = new List<Person>
+{
+    new Person { Name = "Alice", Age = 25, City = "Beijing" },
+    new Person { Name = "Bob", Age = 30, City = "Shanghai" },
+    new Person { Name = "Charlie", Age = 25, City = "Beijing" }
+};
+
+// 按年龄排序
+var byAge = people.OrderBy(p => p.Age).ToList();
+// 按姓名排序
+var byName = people.OrderBy(p => p.Name).ToList();
+// 按城市排序
+var byCity = people.OrderBy(p => p.City).ToList();
+```
+
+ThenBy，可以继续排序
 # ----- CodeWars -----
 
 > 2025年7月27日 开始记录
