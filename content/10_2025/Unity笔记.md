@@ -1,9 +1,47 @@
-## C# 脚本
-### Header 标注
-代码中，在变量前写如下代码，可以在Inspector面板查看标注：
-```c#
+## 物理 Rigidbody
+### 代码：Rigidbody 不能被移除
+如题，因为 Rigidbody 继承自 Component 组件，而常见的脚本、Collider 都继承自 Behaviour。
+### 定义：静态碰撞体和动态碰撞体
+> 区别，没带 Rigidbody 和带了 Rigidbody
 
-```
+Static Collider，指的是不带 Rigidbody 的 Collider
+Dynamic Collider，带了 Rigidbody 组件的 Collider
+### 碰撞检测（Continuous Collision Detection, CCD）
+> Unity Manual: https://docs.unity3d.com/6000.2/Documentation/Manual/ContinuousCollisionDetection.html
+
+**Collision Dectation：**
+- **Discrete**，离散，每次物理检测检查碰撞，效率最高，但容易漏掉
+
+除此以外，下面三种 Continuous 都是提前预算碰撞来实现的碰撞检测
+
+- **Continuous**，持续检查与静态碰撞体的碰撞（不带 Rigidbody 的 Collider）
+- **Continuous Dynamic**，持续监测 Rigidbody 与静态碰撞体和动态碰撞体的碰撞
+
+这两种检测方式是基于 [Sweep-based CCD](https://docs.unity3d.com/6000.2/Documentation/Manual/sweep-based-ccd.html)，最精确的检测方式同时也最耗性能，但不能预测旋转，只能预测线性运动（比如一根棍子高速旋转的场景，检测不到棍子扫到的物体）
+
+- **Continuous Speculative**，推测检测
+
+基于 [Speculative CCD](https://docs.unity3d.com/6000.2/Documentation/Manual/speculative-ccd.html) ，支持线性运动和角运动，采用 AABB 包围盒检测，精确度相比于 Sweep-based CCD 更低，预测结果可能出错导致偏离预期轨迹。
+
+> [!tip]
+> 碰撞检测推荐尝试顺序：
+> - Discrete
+> - Continuous Speculative
+> - Continuous
+> - Continuous Dynamic
+
+**更完整的选择顺序：**
+> 还要更完整的检测顺序建议自己去读一下 Unity 文档，表格表示并没有把文档中的情况都涵盖到位，还是需要自己去看一下各种算法怎么实现的，缺陷可能在哪里才能选择最适合自己的检测模式。
+
+**视频推荐：**
+【Unity】3分钟搞懂Unity的4种碰撞检测模式 CC中字熟 https://www.bilibili.com/video/BV1de4y1E7Qm/
+### Tip：改变单个物体重力
+> 比如我们场景中有多个玩家（PlayerController），希望玩家踩空的时候变成浮空的状态，怎么办？
+
+法一：AddForce
+法二：修改 Drag & AnglerDrag
+
+### Tip：不要对刚体应用 Transform
 
 ## 碰撞器 Collider & Trigger
 
