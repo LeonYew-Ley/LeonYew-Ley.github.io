@@ -5,6 +5,112 @@
 
 ```
 
+## 碰撞器 Collider & Trigger
+
+### 使用 Layer 过滤来优化碰撞检测效率
+> 在 Unity 开发中，`Collider` 和 `Trigger` 的检测效率对性能有很大影响，尤其是在场景中存在大量物体时。一个常见的优化手段就是使用 **Layer** 来进行碰撞过滤，而不是依赖 Tag 或逐个对象判断。
+
+
+**为什么用 Layer 而不是 Tag？**
+- **性能差异**：Layer 在 Unity 内部使用整数表示，而 Tag 是字符串，整数比较远比字符串比较高效。
+- **位运算支持**：LayerMask 可以通过位屏蔽（二元运算）进行快速过滤，非常适合批量判断。
+
+**比较单个Layer：**
+```csharp
+//这样可以将字符串名称转换成 Layer 的整数 ID。
+int layerId = LayerMask.NameToLayer("Enemy");
+
+if (other.gameObject.layer == layerId) 
+{
+	Debug.Log("检测到敌人"); 
+}
+```
+
+**多个 Layer 的比较：**
+> 当需要判断一个物体是否属于多个目标 Layer 时，推荐使用 `LayerMask` 配合位运算：
+
+```csharp
+public LayerMask targetLayers;
+void OnTriggerEnter(Collider other)
+{
+	if ((targetLayers.value & (1 << other.gameObject.layer)) != 0) 
+	{
+		Debug.Log("进入目标 Layer 范围");
+	} 
+}
+```
+
+这里的关键是 `(1 << other.gameObject.layer)`，它会生成对应 Layer 的掩码，然后与目标 `LayerMask` 做按位与运算。如果结果不为 0，就说明当前物体的 Layer 在目标集合内。
+
+**讲讲位运算和 LayerMask 的存储方式：**
+
+LayerMask 的存储方式：
+
+Unity 一共有 32 个 Layer（编号 0–31）。每个物体的 gameObject.layer 是一个 int，表示它在哪个 Layer 上（例如 Layer 8 = "Player"）。
+
+LayerMask 本质上是一个 32 位整数，每一位表示一个 Layer 是否启用：
+
+- 1 << 8 → 表示第 8 个 Layer（Player）。
+- 1 << 9 → 表示第 9 个 Layer（Enemy）。
+- 1 << 8 | 1 << 9 → 同时包含 Player 和 Enemy 两个 Layer。
+
+
+`<<` 左移运算：
+> 会把一个数的二进制 **整体往左移动 N 位**，右边空出来的位置补 0
+```csharp
+// x << n   =   x * 2^n
+1 << 0   // 0000...0001 → 结果 = 1
+1 << 1   // 0000...0010 → 结果 = 2
+1 << 2   // 0000...0100 → 结果 = 4
+1 << 3   // 0000...1000 → 结果 = 8
+```
+
+`&`按位与运算符（bitwise AND）：
+> 对两个整数的二进制表示逐位比较：如果两个数在同一位上 **都是 1** 则结果为 1。否则结果为 0。
+
+`|` 按位或运算符（bitwise OR）：
+> 对两个整数的二进制表示逐位比较：只要某一位上 有一个是 1 , 结果就是 1。两个都为 0 结果才是 0。
+
+可以用`|` 来合并多个 Layer 掩码：
+```csharp
+// 只包含 Layer 8
+int maskA = 1 << 8;  
+
+// 只包含 Layer 9
+int maskB = 1 << 9;  
+
+// 合并两个 → 同时包含 Layer 8 和 9
+int maskAB = maskA | maskB;  
+```
+
+位屏蔽（bitmask）：
+> **位屏蔽**就是用一个整数（`LayerMask`）的二进制位来表示一组 Layer 是否被选中。
+
+综上，对于下面代码就很好理解了：
+```csharp
+void OnCollisionEnter(Collision other)
+{
+	// 将要检测的 targetLayers 的 value 与 碰撞进来的 other.gameObject.layer 进行比较，如果不为 0，则代表 targetLayer 包含 other.gameObject.layer
+	if ((targetLayers.value & (1 << other.gameObject.layer)) != 0)
+	{
+	    // 命中
+	}
+}
+```
+
+或者我们也可以这样写：
+```csharp
+void OnCollisionEnter(Collision other)
+{
+	// 如果 targetLayers 和 other.gameObject.layer 进行按位或运算（也就是合并）之后，依旧和 targetLayers 相等，就表示 targetLayers 包含 other.gameObject.layer
+
+	// 比如 targetLayers 为 0011, other.gameObject.layer = 1000, 按位或运算之后为 1011, 就不对，表示没有命中； 而如果是 0011 和 0001 进行按位或运算之后，依旧是 0011
+	if(targetLayers == (targetLayers | (1 << other.gameObject.layer)))
+	{
+		// 命中
+	}
+}
+```
 ## -------------- 实战应用 --------------
 
 ## 状态机
