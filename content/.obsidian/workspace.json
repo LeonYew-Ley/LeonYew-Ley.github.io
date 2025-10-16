@@ -45,12 +45,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_2025/Unity笔记.md",
+                "file": "2025-10-16-父物体禁用导致子物体组件未注册的Bug.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Unity笔记"
+              "title": "2025-10-16-父物体禁用导致子物体组件未注册的Bug"
             }
           },
           {
@@ -203,13 +203,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/Unity笔记.md",
+                "file": "2025-10-16-父物体禁用导致子物体组件未注册的Bug.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Unity笔记 的大纲"
+              "title": "2025-10-16-父物体禁用导致子物体组件未注册的Bug 的大纲"
             }
           }
         ],
@@ -233,14 +233,23 @@
   },
   "active": "4c65cf093d3dcb00",
   "lastOpenFiles": [
-    "10_2025/CSharp 语言笔记.md",
-    "2025-09-29-MVC 与 MVVM 的区别，以及在 Unity 项目中的实践.md",
-    "10_2025/CS大法好👌.md",
-    "00_INBOX/未命名.md",
+    "98_Images/paste/Pasted image 20251016162215.png",
+    "98_Images/paste/Pasted image 20251016162204.png",
+    "98_Images/paste/Pasted image 20251016162157.png",
+    "98_Images/paste/Pasted image 20251016161231.png",
+    "98_Images/paste/Pasted image 20251016161203.png",
+    "Pasted image 20251016160951.png.md",
+    "2025-10-16-父物体禁用导致子物体组件未注册的Bug.md",
+    "Pasted image 20251016160951.png",
+    "Pasted image 20251016160927.png",
     "10_2025/2025 编程模式、框架.md",
     "10_2025/《原子习惯》.md",
     "10_2025/2025.md",
+    "10_2025/CSharp 语言笔记.md",
     "10_2025/Unity笔记.md",
+    "2025-09-29-MVC 与 MVVM 的区别，以及在 Unity 项目中的实践.md",
+    "10_2025/CS大法好👌.md",
+    "00_INBOX/未命名.md",
     "10_2025/CodeWars.md",
     "10_2025/📖 极简读书笔记.md",
     "10_2025/《如何阅读一本书》.md",
