@@ -82,7 +82,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -203,13 +203,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Quartz+Obsidian快速配置回顾.md",
+                "file": "10_2025/2025.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Quartz+Obsidian快速配置回顾 的大纲"
+              "title": "2025 的大纲"
             }
           }
         ],
@@ -231,13 +231,13 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "34694ef05c152b2a",
+  "active": "96ece908c8e54334",
   "lastOpenFiles": [
+    "Quartz+Obsidian快速配置回顾.md",
     "10_2025/2025 编程模式、框架.md",
     "10_2025/《原子习惯》.md",
     "2025-10-25-台湾光复纪念日何以为家观后感.md",
     "10_2025/2025.md",
-    "Quartz+Obsidian快速配置回顾.md",
     "98_Images/paste/拼接截图.jpg",
     "00_INBOX/2025-10-16-Cursor配置Unity环境.md",
     "离线下载其他 VSCode 插件、颜色主题.md",
