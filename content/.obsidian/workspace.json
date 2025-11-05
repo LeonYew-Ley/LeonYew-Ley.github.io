@@ -59,12 +59,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_2025/2025 编程模式、框架.md",
+                "file": "2025-11-05-痤疮治疗方案笔记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025 编程模式、框架"
+              "title": "2025-11-05-痤疮治疗方案笔记"
             }
           },
           {
@@ -82,7 +82,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -203,13 +203,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/2025.md",
+                "file": "2025-11-05-痤疮治疗方案笔记.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2025 的大纲"
+              "title": "2025-11-05-痤疮治疗方案笔记 的大纲"
             }
           }
         ],
@@ -217,7 +217,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -231,13 +231,17 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "96ece908c8e54334",
+  "active": "aee512cd007d0934",
   "lastOpenFiles": [
-    "Quartz+Obsidian快速配置回顾.md",
+    "98_Images/paste/PixPin_2025-11-05_09-37-50.png",
+    "10_2025/CSharp 语言笔记.md",
+    "2025-11-05-痤疮治疗方案笔记.md",
+    "10_2025/CS大法好 🙏.md",
     "10_2025/2025 编程模式、框架.md",
+    "10_2025/2025.md",
+    "Quartz+Obsidian快速配置回顾.md",
     "10_2025/《原子习惯》.md",
     "2025-10-25-台湾光复纪念日何以为家观后感.md",
-    "10_2025/2025.md",
     "98_Images/paste/拼接截图.jpg",
     "00_INBOX/2025-10-16-Cursor配置Unity环境.md",
     "离线下载其他 VSCode 插件、颜色主题.md",
@@ -252,10 +256,8 @@
     "Pasted image 20251016160951.png.md",
     "Pasted image 20251016160951.png",
     "Pasted image 20251016160927.png",
-    "10_2025/CSharp 语言笔记.md",
     "10_2025/Unity笔记.md",
     "00_INBOX/2025-09-29-MVC 与 MVVM 的区别，以及在 Unity 项目中的实践.md",
-    "10_2025/CS大法好👌.md",
     "00_INBOX/未命名.md",
     "10_2025/CodeWars.md",
     "10_2025/📖 极简读书笔记.md",

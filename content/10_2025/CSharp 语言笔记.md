@@ -51,7 +51,8 @@
   - 多行 `/**/`
   - VSCode 块注释快捷键：`Shift + Alt + A`（Windows/Linux），`Option + Shift + A`（Mac）
   - VSCode 格式化快捷键：`Shift + Alt + F`（Windows/Linux），`Option + Shift + F`（Mac）
-
+## 类与命名空间
+using使用的都是命名空间，命名空间是为了避免同名函数冲突
 
 ## 类与对象
 
@@ -74,7 +75,6 @@ public class NewDreamer
     public string Introduce() => $"大家好，我是{_fullName}";
 }
 ```
-
 ## 类型变量与方法
 数据类型：int、float、double...
 
