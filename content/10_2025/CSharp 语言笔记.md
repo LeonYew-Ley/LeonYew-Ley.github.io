@@ -52,8 +52,10 @@
   - VSCode 块注释快捷键：`Shift + Alt + A`（Windows/Linux），`Option + Shift + A`（Mac）
   - VSCode 格式化快捷键：`Shift + Alt + F`（Windows/Linux），`Option + Shift + F`（Mac）
 ## 类与命名空间
-using使用的都是命名空间，命名空间是为了避免同名函数冲突
-
+- using使用的都是命名空间，命名空间是为了避免同名函数冲突
+- 冲突的时候使用全量命名
+- Assembly 类库（DLL，Dynamic Link Library）
+- 
 ## 类与对象
 
 ### 对象与实例
