@@ -1,5 +1,6 @@
 # C# 语言笔记
 > 本文档结合[《C#语言入门讲解》](https://www.bilibili.com/video/BV1wx411K7rb)和《C# 12.0 本质论》提炼C#相关知识
+> 课堂笔记： https://www.yuque.com/yuejiangliu/dotnet/timothy-csharp-001
 
 学习资料：
 - 
@@ -51,11 +52,16 @@
   - 多行 `/**/`
   - VSCode 块注释快捷键：`Shift + Alt + A`（Windows/Linux），`Option + Shift + A`（Mac）
   - VSCode 格式化快捷键：`Shift + Alt + F`（Windows/Linux），`Option + Shift + F`（Mac）
-## 类与命名空间
+## P3：类与命名空间
 - using使用的都是命名空间，命名空间是为了避免同名函数冲突
 - 冲突的时候使用全量命名
 - Assembly 类库（DLL，Dynamic Link Library）
-- 
+	- 提供方法
+-  Microsoft Help Viewer，MSDN 文档使用：引用带有窗口的类库，让程序显示出窗口
+- NuGet 管理器可以自动引用相关类库
+- 依赖关系
+	- UML图
+
 ## 类与对象
 
 ### 对象与实例

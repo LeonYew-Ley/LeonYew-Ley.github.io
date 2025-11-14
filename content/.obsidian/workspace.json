@@ -45,12 +45,24 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Quartz+Obsidian快速配置回顾.md",
+                "file": "2025-11-14-在Rider中怎么打依赖断点.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Quartz+Obsidian快速配置回顾"
+              "title": "2025-11-14-在Rider中怎么打依赖断点"
+            }
+          },
+          {
+            "id": "0a40519a300eca61",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.10.3"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.10.3"
             }
           },
           {
@@ -82,7 +94,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -203,13 +215,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/Unity笔记.md",
+                "file": "2025-11-14-在Rider中怎么打依赖断点.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Unity笔记 的大纲"
+              "title": "2025-11-14-在Rider中怎么打依赖断点 的大纲"
             }
           }
         ],
@@ -217,7 +229,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 252.5
+    "width": 486.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -231,10 +243,14 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "cfe50aafc52375c7",
+  "active": "34694ef05c152b2a",
   "lastOpenFiles": [
+    "98_Images/paste/1763085453633_d 1.png",
+    "2025-11-14-在Rider中怎么打依赖断点.md",
+    "98_Images/paste/1763085453633_d.png",
     "10_2025/CSharp 语言笔记.md",
     "Quartz+Obsidian快速配置回顾.md",
+    "10_2025/Unity笔记.md",
     "2025-11-05-痤疮治疗方案笔记.md",
     "98_Images/paste/PixPin_2025-11-05_09-37-50.png",
     "10_2025/CS大法好 🙏.md",
@@ -252,10 +268,7 @@
     "98_Images/paste/Pasted image 20251016162204.png",
     "98_Images/paste/Pasted image 20251016162157.png",
     "98_Images/paste/Pasted image 20251016161231.png",
-    "98_Images/paste/Pasted image 20251016161203.png",
     "Pasted image 20251016160951.png.md",
-    "Pasted image 20251016160951.png",
-    "10_2025/Unity笔记.md",
     "00_INBOX/2025-09-29-MVC 与 MVVM 的区别，以及在 Unity 项目中的实践.md",
     "00_INBOX/未命名.md",
     "10_2025/CodeWars.md",
