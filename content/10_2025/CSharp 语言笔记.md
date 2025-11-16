@@ -1,4 +1,4 @@
-# C# 语言笔记
+# C# 语言笔记 ——————————————
 > 本文档结合[《C#语言入门讲解》](https://www.bilibili.com/video/BV1wx411K7rb)和《C# 12.0 本质论》提炼C#相关知识
 > 课堂笔记： https://www.yuque.com/yuejiangliu/dotnet/timothy-csharp-001
 
@@ -52,7 +52,7 @@
   - 多行 `/**/`
   - VSCode 块注释快捷键：`Shift + Alt + A`（Windows/Linux），`Option + Shift + A`（Mac）
   - VSCode 格式化快捷键：`Shift + Alt + F`（Windows/Linux），`Option + Shift + F`（Mac）
-## P3：类与命名空间
+## 03：类与命名空间
 - using使用的都是命名空间，命名空间是为了避免同名函数冲突
 - 冲突的时候使用全量命名
 - Assembly 类库（DLL，Dynamic Link Library）
@@ -62,39 +62,54 @@
 - 依赖关系
 	- UML图
 
-## 类与对象
+## 06、07：类型变量与对象
+> 07 特别有用，认识了C#中很重要的一些概念，同时也是面试常问的问题，C# 语言的五大基本类型，装箱拆箱，变量在内存中的存储等等。
 
-### 对象与实例
-简单理解，对象就是实例。
+**变量**
+变量就是以变量名所对应的内存地址为起点，以其数据类型所要求的存储空间为长度的一块内存区域。
 
-精确理解，在编程语境下，对象通常指现实世界中的物体，实例通常指类（代码）实例化出来的一个Object（对象）。
-
-### 静态成员与非静态成员
-核心区别是，这两个概念，成员属于“类”还是具体的“实例”
+**变量的类型**
+静态变量、实例变量、数组变量、值参数、引用参数、输出形参、局部变量（局部变量都分配在栈上）
 
 ```csharp
-public class NewDreamer
+class Player
 {
-    private string _fullName = "黎恩瑜";
-    public NewDreamer(string nickName)
-    {
-        this._fullName = nickName;
-    }
-    public string Introduce() => $"大家好，我是{_fullName}";
+	public static int PlayerCount;  // 静态变量
+
+	public int health = 100;        // 实例变量 / 成员变量 / 字段（Instance Variable / Field）
+
+	public static void Attack(
+		int monsterId,              // 值参数（Value Parameter：传值复制）
+		ref int playerId,           // 引用参数（ref parameter：传引用，可修改原值）
+		out bool attackSucess)      // 输出形参（out parameter：必须在方法内赋值）
+	{
+		int attackTimes = 3;        // 局部变量
+		attackSucess = true;
+
+		int[] numbers = new int[3]; // 数组元素
+	}
 }
 ```
-## 类型变量与方法
-数据类型：int、float、double...
 
-方法与函数：
-> 在 C 语言中叫做函数，后来发展为 C++，函数成为了类成员，后面遍开始叫做方法（成员函数）。
+**C# 的五大数据类型**
+类、接口、委托；结构体、枚举；前三个是引用类型，后两个是值类型。
 
-算法：循环与递归
-## 序列化与反序列化
-序列化：将对象转化为可以存储在内存中/网络传输的格式的过程，比如转化成XML文件、JSON文件、二进制文件等等
-反序列化：用文件的内容重建为对象
+值类型分配在栈上，引用类型分配在堆上。栈只能由系统来操作，软件只能对堆进行操作，进而引出了装箱拆箱的概念。
 
-# 语法
+在 Visual Studio 中，安装了离线的 Help Viewer，可以通过给 Help.F1Help 命令分配快捷键，进而查看关键字、一些数据类型的定义。
+
+**值类型的变量**
+byte, sbyte, short, ushort, int, bool...
+引用类型的变量就是类、接口、委托，引用类型变量里面存储的数据是“对象的内存地址“
+
+**装箱和拆箱**
+装箱就是引用类型变量存储值类型变量的值，比如 Object obj 来存储 int x 的值，由于 x 分配在栈上且栈由系统管理，所以 obj 不能直接存储 x 在栈上的地址，只能把 x 的值复制到堆上，并且在 obj 的内存中存储堆上的内存地址，其中，把值从栈复制到堆上的操作叫做装箱。
+
+拆箱就是把引用类型的值再放回栈上。比如 int y  = (int)obj，此时 y 是值类型存储在栈上，且直接存储值，所以需要通过 obj 获取到堆上的内存地址，再把堆上的内存中的值复制到 y 所对应的栈内存中，这个过程叫做拆箱。
+
+我的理解是，“箱子”代表引用的堆上的地址，相当于引用类型封装了一层，把原本在栈上的值通过引用地址包装到堆中，叫做装箱；通过“箱子”找到堆上对应的值，再搬回栈中，避免了通过地址再访问，叫做拆箱，拆掉了这一层引用。
+
+# C# 语法 ------------------------------------------
 ## 一些初始化声明
 > 平常写代码的时候，声明变量完了，编辑器总是提示我这里可以 Quick Fix、那里也可以，导致我总是写着写着怀疑人生，搞得都不知道该如何声明变量了，所以在这里总结了一下。
 
@@ -332,7 +347,12 @@ var byCity = people.OrderBy(p => p.City).ToList();
 ```
 
 ThenBy，可以继续排序
-# ----- CodeWars -----
+
+## 序列化与反序列化
+序列化：将对象转化为可以存储在内存中/网络传输的格式的过程，比如转化成XML文件、JSON文件、二进制文件等等
+反序列化：用文件的内容重建为对象
+
+# CodeWars刷题记录--------------------------------
 
 > 2025年7月27日 开始记录
 > 
