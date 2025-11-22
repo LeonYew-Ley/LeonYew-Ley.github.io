@@ -45,12 +45,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_2025/CSharp 语言笔记.md",
+                "file": "10_2025/《我与地坛》.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CSharp 语言笔记"
+              "title": "《我与地坛》"
             }
           },
           {
@@ -92,9 +92,23 @@
               "icon": "lucide-file",
               "title": "《原子习惯》"
             }
+          },
+          {
+            "id": "4b77b0fe65f5e484",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10_2025/《焦虑的人》.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "《焦虑的人》"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -215,13 +229,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/CSharp 语言笔记.md",
+                "file": "10_2025/《焦虑的人》.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "CSharp 语言笔记 的大纲"
+              "title": "《焦虑的人》 的大纲"
             }
           }
         ],
@@ -243,21 +257,24 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "34694ef05c152b2a",
+  "active": "4b77b0fe65f5e484",
   "lastOpenFiles": [
+    "10_2025/2025.md",
+    "10_2025/2025 编程模式、框架.md",
+    "10_2025/CS大法好 🙏.md",
+    "10_2025/CSharp 语言笔记.md",
+    "10_2025/Unity笔记.md",
+    "10_2025/📖 极简读书笔记.md",
+    "10_2025/《焦虑的人》.md",
+    "10_2025/《我与地坛》.md",
     "20_BLOG/2025-11-14-在Rider中怎么打依赖断点.md",
     "20_BLOG/2025-08-16-Demo项目《蜂蜂大乱斗》技术复盘（Unity 6）.md",
     "ABOUTME.md",
     "98_Images/paste/1763085453633_d 1.png",
     "98_Images/paste/1763085453633_d.png",
-    "10_2025/CSharp 语言笔记.md",
     "Quartz+Obsidian快速配置回顾.md",
-    "10_2025/Unity笔记.md",
     "20_BLOG/2025-11-05-痤疮治疗方案笔记.md",
     "98_Images/paste/PixPin_2025-11-05_09-37-50.png",
-    "10_2025/CS大法好 🙏.md",
-    "10_2025/2025 编程模式、框架.md",
-    "10_2025/2025.md",
     "10_2025/《原子习惯》.md",
     "20_BLOG/2025-10-25-台湾光复纪念日何以为家观后感.md",
     "98_Images/paste/拼接截图.jpg",
@@ -274,12 +291,9 @@
     "20_BLOG/2025-09-29-MVC 与 MVVM 的区别，以及在 Unity 项目中的实践.md",
     "00_INBOX/未命名.md",
     "10_2025/CodeWars.md",
-    "10_2025/📖 极简读书笔记.md",
     "10_2025/《如何阅读一本书》.md",
     "10_2025/《Learn More, Study Less》.md",
     "index.md",
-    "20_BLOG/2025-08-16-UsefulToolsRecommend.md",
-    "20_BLOG/2025-08-17-正则表达式.md",
-    "Quartz + Obsidian 快速回顾.md"
+    "20_BLOG/2025-08-16-UsefulToolsRecommend.md"
   ]
 }
