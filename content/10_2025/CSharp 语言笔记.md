@@ -52,7 +52,7 @@
   - 多行 `/**/`
   - VSCode 块注释快捷键：`Shift + Alt + A`（Windows/Linux），`Option + Shift + A`（Mac）
   - VSCode 格式化快捷键：`Shift + Alt + F`（Windows/Linux），`Option + Shift + F`（Mac）
-## 03：类与命名空间
+## 03_类与命名空间
 - using使用的都是命名空间，命名空间是为了避免同名函数冲突
 - 冲突的时候使用全量命名
 - Assembly 类库（DLL，Dynamic Link Library）
@@ -62,7 +62,7 @@
 - 依赖关系
 	- UML图
 
-## 06、07：类型变量与对象
+## 06&07_类型变量与对象
 > 07 特别有用，认识了C#中很重要的一些概念，同时也是面试常问的问题，C# 语言的五大基本类型，装箱拆箱，变量在内存中的存储等等。
 
 **变量**
@@ -108,6 +108,82 @@ byte, sbyte, short, ushort, int, bool...
 拆箱就是把引用类型的值再放回栈上。比如 int y  = (int)obj，此时 y 是值类型存储在栈上，且直接存储值，所以需要通过 obj 获取到堆上的内存地址，再把堆上的内存中的值复制到 y 所对应的栈内存中，这个过程叫做拆箱。
 
 我的理解是，“箱子”代表引用的堆上的地址，相当于引用类型封装了一层，把原本在栈上的值通过引用地址包装到堆中，叫做装箱；通过“箱子”找到堆上对应的值，再搬回栈中，避免了通过地址再访问，叫做拆箱，拆掉了这一层引用。
+
+## 10&11_操作符
+
+**操作符的本质**：函数的简记法
+```csharp
+internal class CustomOperator
+{
+	public void Main()
+	{
+		GymPeople ley = new GymPeople("Ley", 5);
+		GymPeople csj = new GymPeople("Csj", 4);
+
+		Console.WriteLine($"{ley.Name} & {csj.Name} made a fantasic Love which is worth a [{ley*csj}] stars!");
+	}
+}
+
+class GymPeople
+{
+	public string Name;
+	public int SexyLevel;
+	public GymPeople(string name, int sexyLevel)
+	{
+		this.Name = name;
+		this.SexyLevel = sexyLevel;
+	}
+
+	//public int MakeLove(GymPeople p1, GymPeople p2)
+	public static int operator * (GymPeople p1, GymPeople p2)
+	{
+		var rnd = new Random();
+		return rnd.Next(0, p1.SexyLevel + p2.SexyLevel);
+	}
+}
+```
+
+**成员访问操作符：`.` 操作符**
+委托中，访问类的成员方法，不用写圆括号：
+```csharp
+class Program{
+	public static void Main(string[] args){
+		Test t = new Test();
+		// 这里不用写圆括号，此时这里相当于通过点操作符访问了 t 的成员 PrintHello
+		Action myAction = new Action(t.PrintHello);
+		myAction();
+	}
+}
+
+class Test{
+	public void PrintHello(){
+		Console.WriteLine("hello");
+	}
+}
+```
+
+**Metadata 元数据**
+可以通过 `typeof` 操作符来访问。
+```csharp
+public void Main()
+{
+	Type t = typeof(int);
+	Console.WriteLine(t.FullName);
+	Console.WriteLine(t.Namespace);
+	Console.WriteLine(t.Name);
+
+	foreach(var method in t.GetMethods())
+	{
+		Console.WriteLine(method.Name);
+	}
+	Console.WriteLine($"Count: {t.GetMethods().Length}");
+}
+```
+
+**default 操作符**
+可以获取某个变量的默认值。值类型的默认值是 0，引用类型的默认值是 null，枚举类型的默认值是 0，他们的原理都是在内存中存 0。
+
+<u>特别要注意枚举类型，可能有的枚举类型没有为0的值，但是对枚举类型使用 default 操作符的时候，会返回 0；</u>
 
 # C# 语法 ------------------------------------------
 ## 一些初始化声明
