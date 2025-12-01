@@ -108,7 +108,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -230,13 +230,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/CSharp 语言笔记.md",
+                "file": "10_2025/Unity笔记.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "CSharp 语言笔记 的大纲"
+              "title": "Unity笔记 的大纲"
             }
           }
         ],
@@ -244,7 +244,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 212.5
+    "width": 327.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -258,14 +258,17 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "4b77b0fe65f5e484",
+  "active": "cfe50aafc52375c7",
   "lastOpenFiles": [
+    "98_Images/paste/Pasted image 20251202013729.png",
+    "10_2025/《原子习惯》.md",
+    "98_Images/paste/Pasted image 20251202012519.png",
+    "10_2025/Unity笔记.md",
+    "10_2025/CSharp 语言笔记.md",
     "10_2025/CS大法好 🙏.md",
     "10_2025/《焦虑的人》.md",
     "10_2025/2025.md",
     "10_2025/2025 编程模式、框架.md",
-    "10_2025/CSharp 语言笔记.md",
-    "10_2025/Unity笔记.md",
     "10_2025/📖 极简读书笔记.md",
     "10_2025/《我与地坛》.md",
     "20_BLOG/2025-11-14-在Rider中怎么打依赖断点.md",
@@ -276,7 +279,6 @@
     "Quartz+Obsidian快速配置回顾.md",
     "20_BLOG/2025-11-05-痤疮治疗方案笔记.md",
     "98_Images/paste/PixPin_2025-11-05_09-37-50.png",
-    "10_2025/《原子习惯》.md",
     "20_BLOG/2025-10-25-台湾光复纪念日何以为家观后感.md",
     "98_Images/paste/拼接截图.jpg",
     "20_BLOG/2025-10-16-Cursor配置Unity环境.md",
@@ -287,14 +289,12 @@
     "98_Images/paste/Pasted image 20251016162215.png",
     "98_Images/paste/Pasted image 20251016162204.png",
     "98_Images/paste/Pasted image 20251016162157.png",
-    "98_Images/paste/Pasted image 20251016161231.png",
     "Pasted image 20251016160951.png.md",
     "20_BLOG/2025-09-29-MVC 与 MVVM 的区别，以及在 Unity 项目中的实践.md",
     "00_INBOX/未命名.md",
     "10_2025/CodeWars.md",
     "10_2025/《如何阅读一本书》.md",
     "10_2025/《Learn More, Study Less》.md",
-    "index.md",
-    "20_BLOG/2025-08-16-UsefulToolsRecommend.md"
+    "index.md"
   ]
 }

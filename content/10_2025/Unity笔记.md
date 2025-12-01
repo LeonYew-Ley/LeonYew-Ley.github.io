@@ -233,3 +233,26 @@ void OnCollisionEnter(Collision other)
   - SetInventory
   - Inventory_OnItemListChanged
   - RefreshInventoryItems
+
+## 避障第三人称摄像机的实现
+> link: https://www.youtube.com/watch?v=QrDgrCO22aU
+> date: 2025年12月2日
+
+原理：从玩家位置向摄像机理想位置发送一条射线，如果检测到障碍物，就将摄像机的位置应用为 hit.distance - minimumDistance（摄像机距墙最小距离）
+
+构成：三部分——Hierarchy保持相对位置、Controller通过读取输入设置旋转、RayCaster 通过射线更新位置。
+
+这里有四个层级：
+- CamRoot：放在 Player 下面，设置 LocalOffset 为玩家头顶
+	- CamControlls：挂CamController和CamDistanceRayCaster
+		- CamTarget：LocalOffset 设置为玩家身后
+			- CamTransform：MainCamera，摄像机本体。
+![[Pasted image 20251202013729.png]]
+
+CamRoot是一直在玩家头顶的。
+CamControlls上的CamController会读取输入控制自身旋转，这样就控制了CamTarget和相机本体相对于玩家的旋转。
+CamControlls上的 RayCaster 组件则是控制相机本地的 position，用来避障。
+
+![[Pasted image 20251202012519.png]]
+
+原理还是很简单，但是之前在地铁上看的时候没搞懂代码里面的变量和 Hierarchy 面板中的Obj 的对应关系，一直搁置，今天运行了一下工程才搞懂。
