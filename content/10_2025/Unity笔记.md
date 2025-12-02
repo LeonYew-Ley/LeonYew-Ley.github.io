@@ -236,6 +236,7 @@ void OnCollisionEnter(Collision other)
 
 ## 避障第三人称摄像机的实现
 > link: https://www.youtube.com/watch?v=QrDgrCO22aU
+> 
 > date: 2025年12月2日
 
 原理：从玩家位置向摄像机理想位置发送一条射线，如果检测到障碍物，就将摄像机的位置应用为 hit.distance - minimumDistance（摄像机距墙最小距离）
@@ -247,6 +248,7 @@ void OnCollisionEnter(Collision other)
 	- CamControlls：挂CamController和CamDistanceRayCaster
 		- CamTarget：LocalOffset 设置为玩家身后
 			- CamTransform：MainCamera，摄像机本体。
+
 ![[Pasted image 20251202013729.png]]
 
 CamRoot是一直在玩家头顶的。
