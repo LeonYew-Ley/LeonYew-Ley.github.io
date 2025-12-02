@@ -157,6 +157,61 @@ void OnCollisionEnter(Collision other)
 ```
 ## -------------- 实战应用 --------------
 
+## transform 是否有必要缓存
+> link: https://www.youtube.com/watch?v=uTJe7M1E3Tg
+> 
+> date: 2025年12月2日
+
+结论：
+- IDE 中测试：缓存这个行为本身就会有 30% 的性能提升，特别是在 Update() 方法中频繁调用时。
+- Unity 中测试：每秒会有 3 帧的性能提升；帧时间上，有 10% 的性能提升。
+
+其他收获：
+- 每个程序员都应该自己测试了再持有结论
+- 应该做自己的基准测试 BenchMark
+- transform 在 Unity 底层是使用 C++ 跨界访问。
+
+论证过程：
+- 写 C# 代码，在 IDE 中比较，有差异
+- 在 Unity 中运行，有差异
+- 打包运行 Windows Standalone，没差异
+	- Json 论坛中的人运行，有差异
+	- 问题出在 VSync，会弥补帧差距
+
+乞题谬误
+> [Begging the question](https://www.google.com/search?q=Begging+the+question&oq=%E4%B9%9E%E9%A2%98&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyCQgAEEUYORiABDIHCAEQABiABDIGCAIQABgeMgcIAxAAGO8FMgoIBBAAGIAEGKIEMgcIBRAAGO8FMgcIBhAAGO8FMgcIBxAAGO8F0gEJMTAzMzhqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8&mstk=AUtExfBs-Q2V2yHeuz-HP1fo2uLrXN7U_Ab46W6ZIGjx-2HbDxh0Ldx4xAIB5w0WeeCe5KXadxouvJB3smxQeIu9Ez4w4Fv2OQ59FPKtg6Q_DPV-_o2gsLlOlphj11ll6LsMyPwO-jeGzq-ujMHKHW-GJ7okXRvMfbsq50edg1IvX9rM6IY&csui=3&ved=2ahUKEwjcw8i3qJ6RAxXdhKgCHRjoIqsQgK4QegQIARAB), 一种逻辑谬误，在论证中把尚未被证实的结论当成理所当然的前提，从而未能提供任何真正的证据
+
+涅槃谬误
+>涅槃謬誤（英語：nirvana fallacy）或完美主義謬誤（perfectionist fallacy）是一種非形式謬誤，係宣稱某個解決方案因為無法做到涅槃（完美），所以該方案便沒用。
+
+稻草人谬误（straw man) 
+> 稻草人谬误是一种在论证中通过歪曲、夸张或虚构对方论点，转而攻击被篡改后的替身论点（即“稻草人”）的非形式逻辑谬误。其核心特征为将原论点简化为极端或荒谬形态，例如错误引用、曲解原意或强加未提出的观点。
+
+## 避障第三人称摄像机的实现
+> link: https://www.youtube.com/watch?v=QrDgrCO22aU
+> 
+> date: 2025年12月2日
+
+原理：从玩家位置向摄像机理想位置发送一条射线，如果检测到障碍物，就将摄像机的位置应用为 hit.distance - minimumDistance（摄像机距墙最小距离）
+
+构成：三部分——Hierarchy保持相对位置、Controller通过读取输入设置旋转、RayCaster 通过射线更新位置。
+
+这里有四个层级：
+- CamRoot：放在 Player 下面，设置 LocalOffset 为玩家头顶
+	- CamControlls：挂CamController和CamDistanceRayCaster
+		- CamTarget：LocalOffset 设置为玩家身后
+			- CamTransform：MainCamera，摄像机本体。
+
+![[Pasted image 20251202013729.png]]
+
+CamRoot是一直在玩家头顶的。
+CamControlls上的CamController会读取输入控制自身旋转，这样就控制了CamTarget和相机本体相对于玩家的旋转。
+CamControlls上的 RayCaster 组件则是控制相机本地的 position，用来避障。
+
+![[Pasted image 20251202012519.png]]
+
+原理还是很简单，但是之前在地铁上看的时候没搞懂代码里面的变量和 Hierarchy 面板中的Obj 的对应关系，一直搁置，今天运行了一下工程才搞懂。
+
 ## 状态机
 状态机负责管理状态切换，每个状态需要包含：Enter、（Loop）、Exit
 
@@ -233,28 +288,3 @@ void OnCollisionEnter(Collision other)
   - SetInventory
   - Inventory_OnItemListChanged
   - RefreshInventoryItems
-
-## 避障第三人称摄像机的实现
-> link: https://www.youtube.com/watch?v=QrDgrCO22aU
-> 
-> date: 2025年12月2日
-
-原理：从玩家位置向摄像机理想位置发送一条射线，如果检测到障碍物，就将摄像机的位置应用为 hit.distance - minimumDistance（摄像机距墙最小距离）
-
-构成：三部分——Hierarchy保持相对位置、Controller通过读取输入设置旋转、RayCaster 通过射线更新位置。
-
-这里有四个层级：
-- CamRoot：放在 Player 下面，设置 LocalOffset 为玩家头顶
-	- CamControlls：挂CamController和CamDistanceRayCaster
-		- CamTarget：LocalOffset 设置为玩家身后
-			- CamTransform：MainCamera，摄像机本体。
-
-![[Pasted image 20251202013729.png]]
-
-CamRoot是一直在玩家头顶的。
-CamControlls上的CamController会读取输入控制自身旋转，这样就控制了CamTarget和相机本体相对于玩家的旋转。
-CamControlls上的 RayCaster 组件则是控制相机本地的 position，用来避障。
-
-![[Pasted image 20251202012519.png]]
-
-原理还是很简单，但是之前在地铁上看的时候没搞懂代码里面的变量和 Hierarchy 面板中的Obj 的对应关系，一直搁置，今天运行了一下工程才搞懂。
