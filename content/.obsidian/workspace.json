@@ -108,7 +108,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -165,8 +165,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "134364465d3f506a",
@@ -230,13 +229,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/Unity笔记.md",
+                "file": "10_2025/《原子习惯》.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Unity笔记 的大纲"
+              "title": "《原子习惯》 的大纲"
             }
           }
         ],
@@ -258,16 +257,21 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "cfe50aafc52375c7",
+  "active": "74b29106e6109759",
   "lastOpenFiles": [
-    "98_Images/paste/Pasted image 20251202013729.png",
-    "10_2025/《原子习惯》.md",
-    "98_Images/paste/Pasted image 20251202012519.png",
     "10_2025/Unity笔记.md",
+    "10_2025/《原子习惯》.md",
     "10_2025/CSharp 语言笔记.md",
+    "未命名 3.base",
+    "未命名 2.base",
+    "未命名 1.base",
+    "未命名.base",
+    "亲密关系.md",
+    "10_2025/2025.md",
+    "98_Images/paste/Pasted image 20251202013729.png",
+    "98_Images/paste/Pasted image 20251202012519.png",
     "10_2025/CS大法好 🙏.md",
     "10_2025/《焦虑的人》.md",
-    "10_2025/2025.md",
     "10_2025/2025 编程模式、框架.md",
     "10_2025/📖 极简读书笔记.md",
     "10_2025/《我与地坛》.md",
@@ -288,13 +292,11 @@
     "20_BLOG/2025-10-16-父物体禁用导致子物体组件未注册的Bug.md",
     "98_Images/paste/Pasted image 20251016162215.png",
     "98_Images/paste/Pasted image 20251016162204.png",
-    "98_Images/paste/Pasted image 20251016162157.png",
     "Pasted image 20251016160951.png.md",
     "20_BLOG/2025-09-29-MVC 与 MVVM 的区别，以及在 Unity 项目中的实践.md",
     "00_INBOX/未命名.md",
     "10_2025/CodeWars.md",
     "10_2025/《如何阅读一本书》.md",
-    "10_2025/《Learn More, Study Less》.md",
-    "index.md"
+    "10_2025/《Learn More, Study Less》.md"
   ]
 }

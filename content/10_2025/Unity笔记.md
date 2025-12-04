@@ -157,6 +157,20 @@ void OnCollisionEnter(Collision other)
 ```
 ## -------------- 实战应用 --------------
 
+## Rider 的使用以及对 Unity 的特殊优化
+> link: https://youtu.be/h564F6pLOsE?si=LPW56koTyZNi6N3d
+> link2: https://www.bilibili.com/video/BV14jDHYuE4U/
+> link3: https://youtu.be/ra-fpMO5tpA?si=M8H1k3FbEQNtcN_t （没看，有点长，happyNerd的视频）
+> 
+> date: 2025年12月4日
+
+- 跳转到 Unity Manul
+- 可以查看挂载了该类关联的 Prefab、Object
+- 可以查看使用了该类的场景（动态加载应该不能查看）
+- 可以查看为什么有些运算符不建议使用，比如不应该对 Monobehaviour 使用 `?.` 运算符，并且可以链接跳转到 github 相关的链接中
+- Profile 分析代码优化
+- 依赖断点
+
 ## transform 是否有必要缓存
 > link: https://www.youtube.com/watch?v=uTJe7M1E3Tg
 > 
