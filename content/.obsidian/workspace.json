@@ -108,7 +108,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -229,13 +229,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/《原子习惯》.md",
+                "file": "10_2025/2025.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "《原子习惯》 的大纲"
+              "title": "2025 的大纲"
             }
           }
         ],
@@ -257,11 +257,11 @@
       "templater-obsidian:Templater": false
     }
   },
-  "active": "74b29106e6109759",
+  "active": "96ece908c8e54334",
   "lastOpenFiles": [
+    "10_2025/《原子习惯》.md",
     "10_2025/《亲密关系》.md",
     "10_2025/《我与地坛》.md",
-    "10_2025/《原子习惯》.md",
     "10_2025/Unity笔记.md",
     "10_2025/CSharp 语言笔记.md",
     "未命名 3.base",
