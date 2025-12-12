@@ -40,61 +40,7 @@
             }
           },
           {
-            "id": "34694ef05c152b2a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "10_2025/《我与地坛》.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "《我与地坛》"
-            }
-          },
-          {
-            "id": "0a40519a300eca61",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.10.3"
-              },
-              "icon": "lucide-book-up",
-              "title": "版本说明 1.10.3"
-            }
-          },
-          {
-            "id": "cfe50aafc52375c7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "10_2025/Unity笔记.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Unity笔记"
-            }
-          },
-          {
-            "id": "74b29106e6109759",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "10_2025/《原子习惯》.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "《原子习惯》"
-            }
-          },
-          {
-            "id": "4b77b0fe65f5e484",
+            "id": "ec55097ebd80c063",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -108,7 +54,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -165,7 +111,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "134364465d3f506a",
@@ -181,8 +128,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Quartz + Obsidian 快速回顾.md",
-                "collapseAll": false,
+                "file": "10_2025/Unity笔记.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -191,7 +138,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Quartz + Obsidian 快速回顾 的反向链接列表"
+              "title": "Unity笔记 的反向链接列表"
             }
           },
           {
@@ -200,12 +147,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Quartz + Obsidian 快速回顾.md",
+                "file": "10_2025/Unity笔记.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Quartz + Obsidian 快速回顾 的出链列表"
+              "title": "Unity笔记 的出链列表"
             }
           },
           {
@@ -216,7 +163,7 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true,
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-tags",
@@ -224,18 +171,18 @@
             }
           },
           {
-            "id": "4ecaa7404b83824e",
+            "id": "5130b1abeb930507",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/2025.md",
+                "file": "10_2025/CSharp 语言笔记.md",
                 "followCursor": false,
-                "showSearch": true,
+                "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2025 的大纲"
+              "title": "CSharp 语言笔记 的大纲"
             }
           }
         ],
@@ -243,40 +190,53 @@
       }
     ],
     "direction": "horizontal",
-    "width": 327.5
+    "width": 327.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:创建新数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
-      "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
+      "canvas:新建白板": true,
+      "daily-notes:打开/创建今天的日记": true,
+      "templater-obsidian:Templater": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "templater-obsidian:Templater": false
+      "command-palette:打开命令面板": false
     }
   },
-  "active": "96ece908c8e54334",
+  "active": "ec55097ebd80c063",
   "lastOpenFiles": [
+    "98_Images/paste/Pasted image 20251212235843.png",
+    "Pasted image 20251212235146.png.md",
+    "10_2025/CSharp 语言笔记.md",
+    "98_Images/paste/Pasted image 20251212235146.png",
+    "10_2025/2025.md",
+    "20_BLOG/2025-10-16-父物体禁用导致子物体组件未注册的Bug.md",
+    "20_BLOG/2025-08-17-正则表达式.md",
+    "98_Images/paste/Pasted image 20251212234318.png",
+    "10_2025/Unity笔记.md",
+    "index.md",
+    "20_BLOG/2025-11-14-在Rider中怎么打依赖断点.md",
+    "20_BLOG/2025-10-16-Cursor配置Unity环境.md",
+    "20_BLOG/2025-10-25-台湾光复纪念日何以为家观后感.md",
+    "20_BLOG/2024-01-25-使用天地图开发网页地图服务记录.md",
+    "20_BLOG/2024-01-13-Steam Tools 使用教程和Steam游戏本体下载配置.md",
+    "98_Images/paste/Pasted image 20251212095112.png",
+    "未命名 1.base",
+    "未命名.base",
+    "未命名 4.base",
+    "未命名 3.base",
+    "未命名 2.base",
     "10_2025/《原子习惯》.md",
     "10_2025/《亲密关系》.md",
     "10_2025/《我与地坛》.md",
-    "10_2025/Unity笔记.md",
-    "10_2025/CSharp 语言笔记.md",
-    "未命名 3.base",
-    "未命名 2.base",
-    "未命名 1.base",
-    "未命名.base",
     "亲密关系.md",
-    "10_2025/2025.md",
     "98_Images/paste/Pasted image 20251202013729.png",
     "98_Images/paste/Pasted image 20251202012519.png",
     "10_2025/CS大法好 🙏.md",
     "10_2025/《焦虑的人》.md",
     "10_2025/2025 编程模式、框架.md",
     "10_2025/📖 极简读书笔记.md",
-    "20_BLOG/2025-11-14-在Rider中怎么打依赖断点.md",
     "20_BLOG/2025-08-16-Demo项目《蜂蜂大乱斗》技术复盘（Unity 6）.md",
     "ABOUTME.md",
     "98_Images/paste/1763085453633_d 1.png",
@@ -284,20 +244,8 @@
     "Quartz+Obsidian快速配置回顾.md",
     "20_BLOG/2025-11-05-痤疮治疗方案笔记.md",
     "98_Images/paste/PixPin_2025-11-05_09-37-50.png",
-    "20_BLOG/2025-10-25-台湾光复纪念日何以为家观后感.md",
     "98_Images/paste/拼接截图.jpg",
-    "20_BLOG/2025-10-16-Cursor配置Unity环境.md",
     "离线下载其他 VSCode 插件、颜色主题.md",
-    "98_Images/paste/Pasted image 20251016180103.png",
-    "98_Images/paste/Pasted image 20251016180101.png",
-    "20_BLOG/2025-10-16-父物体禁用导致子物体组件未注册的Bug.md",
-    "98_Images/paste/Pasted image 20251016162215.png",
-    "98_Images/paste/Pasted image 20251016162204.png",
-    "Pasted image 20251016160951.png.md",
-    "20_BLOG/2025-09-29-MVC 与 MVVM 的区别，以及在 Unity 项目中的实践.md",
-    "00_INBOX/未命名.md",
-    "10_2025/CodeWars.md",
-    "10_2025/《如何阅读一本书》.md",
-    "10_2025/《Learn More, Study Less》.md"
+    "98_Images/paste/Pasted image 20251016180103.png"
   ]
 }

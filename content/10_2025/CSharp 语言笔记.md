@@ -458,11 +458,67 @@ ThenBy，可以继续排序
 序列化：将对象转化为可以存储在内存中/网络传输的格式的过程，比如转化成XML文件、JSON文件、二进制文件等等
 反序列化：用文件的内容重建为对象
 
-# CodeWars刷题记录--------------------------------
+# 语言实战--------------------------------
+## Bug记录：引用类型变量的值在异步操作中会被覆盖
 
-> 2025年7月27日 开始记录
-> 
-> 刷好多题容易忘，还是开一篇文章记录一下
+> 描述：在一个角色技能中，多个函数需要传参，且参数数量较多，所以用了一个 object[] 数组对象来存储。然而，其中一个函数会在网络消息中同一帧被调用多次，最后函数的执行结果都是最后一次被调用的结果。
+
+Bug 关键原因在于：引用类型变量 + 异步。
+
+即使不使用网络消息，在本地 StartCoroutine 也会造成这个结果。我们可以在 For 循环中，每次都对 object[] 变量进行复制，并且每次引用变量的函数都等待若干帧，最后输出函数的结果，代码如下：
+
+```csharp
+// 共享的成员变量 - 这是问题所在  
+private object[] m_SharedParameters = new object[6];
+
+/// <summary>  
+/// 错误示例：所有异步调用共享同一个数组  
+/// </summary>  
+public void WrongWay_SharedArray()  
+{  
+    for (int i = 0; i < 3; i++)  
+    {        Vector3 pos = new Vector3(i - 1, 0, 0);  
+  
+        // 修改共享的成员变量  
+        m_SharedParameters[4] = pos;  
+  
+        // 异步调用 - 不等待完成就继续  
+        StartCoroutine(DelayedExecute(m_SharedParameters));  
+  
+        // 问题：当DelayedExecute真正执行时，  
+        // m_SharedParameters[4] 可能已经被循环修改成最后一次的值了  
+    }  
+}
+
+/// <summary>  
+/// 模拟延迟执行的异步操作  
+/// </summary>  
+private IEnumerator DelayedExecute(object[] _parameters)  
+{  
+    // 等待一帧（模拟网络延迟或异步处理）  
+    yield return null;  
+  
+    // 当这里执行时，如果_parameters是共享的，可能已经被修改了  
+    Vector3 pos = (Vector3)_parameters[4];  
+    Debug.Log($"异步执行：位置 = {pos}, 帧数 = {Time.frameCount}");  
+}
+```
+
+输出结果：  
+![[Pasted image 20251212234318.png]]
+
+要纠正这个 Bug，有多种途径：
+- 老老实实使用局部值类型变量
+	- 进阶：使用 struct 传参，但仅使用参数类型一样的各个函数
+- 每次创建新的数组
+	- 进阶：ArrayPool，向数据池中租一个数组
+
+```csharp
+object[] arr = ArrayPool<object>.Shared.Rent(length);
+ArrayPool<object>.Shared.Return(arr);
+```
+
+![[Pasted image 20251212235843.png]]
 
 ## [[2025-08-17-正则表达式|正则表达式]]
 

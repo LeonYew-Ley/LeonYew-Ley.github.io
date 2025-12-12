@@ -1,4 +1,5 @@
 {
   "alwaysUpdateLinks": true,
-  "attachmentFolderPath": "98_Images/paste"
+  "attachmentFolderPath": "98_Images/paste",
+  "promptDelete": false
 }

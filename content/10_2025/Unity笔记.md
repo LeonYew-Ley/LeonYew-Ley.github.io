@@ -41,15 +41,9 @@ Dynamic Collider，带了 Rigidbody 组件的 Collider
 
 **视频推荐：**
 【Unity】3分钟搞懂Unity的4种碰撞检测模式 CC中字熟 https://www.bilibili.com/video/BV1de4y1E7Qm/
-### Tip：改变单个物体重力
-> 比如我们场景中有多个玩家（PlayerController），希望玩家踩空的时候变成浮空的状态，怎么办？
-
-法一：AddForce
-法二：修改 Drag & AnglerDrag
-
 ### Tip：不要对刚体应用 Transform
 
-## 碰撞器 Collider & Trigger
+ ## 碰撞器 Collider & Trigger
 
 ### 使用 Layer 过滤来优化碰撞检测效率
 > 在 Unity 开发中，`Collider` 和 `Trigger` 的检测效率对性能有很大影响，尤其是在场景中存在大量物体时。一个常见的优化手段就是使用 **Layer** 来进行碰撞过滤，而不是依赖 Tag 或逐个对象判断。
@@ -155,7 +149,39 @@ void OnCollisionEnter(Collision other)
 	}
 }
 ```
-## -------------- 实战应用 --------------
+
+# -------------- 实战应用 --------------
+
+### Tip：改变单个物体重力
+> 比如我们场景中有多个玩家（PlayerController），希望玩家踩空的时候变成浮空的状态，怎么办？
+
+法一：AddForce
+法二：修改 Drag & AnglerDrag
+
+## 利用数据驱动Unity中的游戏系统
+> link: https://www.youtube.com/watch?v=6qd22ulEds4
+> 
+> date: 2025年12月5日、2025年12月9日
+
+**SOAP**
+> Scriptable Object Architecture Pattern
+
+SOAP 的核心是让 GameObjects 之间解耦，而通过读写共享项目中的数据来完成功能。
+
+**数据驱动示例：技能组成**  
+技能：AbilityData（ScriptableObject），技能由多个 AbilityEffect 组成，Effect 尽量原子化，比如击退、扣血、减速等等。  
+数据对象：AbilityData，只维护一个 `List<AbilityEfeect> effects` 列表
+
+**技能的应用：**  
+在玩家身上添加组件：Ability Executor，传入 AbilityData、Target。在组件的声明周期函数中检测按键，随后响应函数。  
+响应函数中，遍历 AbilityData 中的 Effects，然后调用 Effects 的 Execute 方法，挨个执行。
+
+**实际的流程：**  
+创建技能、选择Effects，然后把技能拖到玩家身上的 Ability Executor 中
+
+**自定义属性Drawer**
+> Odin 能实现的，自己写一定能实现。不过视频中的例子通过遍历派生类来生成下拉框的数据，要是技能类型多了起来，感觉不是个很好的选择，还是 Odin 的拖拽输入框比较好用。
+ 
 
 ## Rider 的使用以及对 Unity 的特殊优化
 > link: https://youtu.be/h564F6pLOsE?si=LPW56koTyZNi6N3d
@@ -229,7 +255,7 @@ CamControlls上的 RayCaster 组件则是控制相机本地的 position，用来
 ## 状态机
 状态机负责管理状态切换，每个状态需要包含：Enter、（Loop）、Exit
 
-## InputSystem与多人分屏
+## Demo复盘：InputSystem与多人分屏
 > 有空再来整理吧，参考链接：https://www.bilibili.com/video/BV1HA411d7YQ/
 - InputActions
   - Control Schemes
@@ -262,7 +288,7 @@ CamControlls上的 RayCaster 组件则是控制相机本地的 position，用来
     - PlayerInput
     - PlayerController.cs
       - PlayerPrefab(Player)
-## 道具系统与UI
+## Demo复盘：道具系统与UI
 - Item
   - enum ItemType
   - GetSprite
@@ -302,3 +328,40 @@ CamControlls上的 RayCaster 组件则是控制相机本地的 position，用来
   - SetInventory
   - Inventory_OnItemListChanged
   - RefreshInventoryItems
+# ------------ 游戏算法 ------------
+##  柏林噪声地形生成
+> link: https://youtu.be/mXGM8-zzRiE?si=UEnj8RHJO55NUDL2
+> link(mainly)： https://www.youtube.com/watch?v=CSa5O6knuwI
+
+生成顺序：
+- 地形生成
+- 水域生成
+- 表面层：泥土、沙子
+- 特征与结构：村庄、数目
+
+地形生成算法演化：
+- 纯随机：地基高度+随机范围，没有连续性
+- 正弦曲线：地极高度+sin(x) * 倍率，通过改振幅和频率可以调整
+	- 南北方向和东西方向：圆滑山丘
+	- 没有随机性
+- Perlin Noise：梯度噪音的一种，可看作高度图，基于亮度
+	- 地基高度 + 柏林噪声 * 倍率：平滑
+- octaves（八度）：将多个不同尺度的噪声图叠加在一起
+	- 简单好用的技巧：第二个噪声的振幅是前面的一半，频率是前面的2倍
+	- 缺少戏剧性的显示特征：悬崖、河谷、高原
+- 特征添加：靠不同的噪音图
+	- 大陆性：高大陆性意味着高海拔，调整 Curve，来制作高原
+	- 侵蚀（Erosion）
+	- 山峰与山谷（Peaks&Valleys)
+- 3D 噪音：密度（Density）
+	- 正密度视为实体、负密度视为空气
+	- 密度向上减低，向下增加
+	- 压缩因子、高度偏移量
+	- 可以生成洞穴
+	- 转变思维：生成连续洞穴
+		- 噪音图黑白边界是空气
+- 生物群系：方块种类、动植物生成
+	- 增加噪音图：温度、湿度
+	- 通过表格，大陆性和侵蚀决定 生物群系组
+		- 再通过湿度温度表格，决定具体的生物群系
+	- 其他细节：温暖群系相互联系，而不是沙漠挨着雪地 
