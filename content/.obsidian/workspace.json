@@ -54,7 +54,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -204,11 +204,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ec55097ebd80c063",
+  "active": "96ece908c8e54334",
   "lastOpenFiles": [
+    "10_2025/CSharp 语言笔记.md",
     "98_Images/paste/Pasted image 20251212235843.png",
     "Pasted image 20251212235146.png.md",
-    "10_2025/CSharp 语言笔记.md",
     "98_Images/paste/Pasted image 20251212235146.png",
     "10_2025/2025.md",
     "20_BLOG/2025-10-16-父物体禁用导致子物体组件未注册的Bug.md",
@@ -245,7 +245,6 @@
     "20_BLOG/2025-11-05-痤疮治疗方案笔记.md",
     "98_Images/paste/PixPin_2025-11-05_09-37-50.png",
     "98_Images/paste/拼接截图.jpg",
-    "离线下载其他 VSCode 插件、颜色主题.md",
-    "98_Images/paste/Pasted image 20251016180103.png"
+    "离线下载其他 VSCode 插件、颜色主题.md"
   ]
 }
