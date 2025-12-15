@@ -151,8 +151,31 @@ void OnCollisionEnter(Collision other)
 ```
 
 # -------------- 实战应用 --------------
+## Unity新项目应该进行的一些设置
+> link: https://www.youtube.com/watch?v=nVieP57TD20
+> date: 2025年12月15日
 
-### Tip：改变单个物体重力
+1. 项目文件夹命名：`U.<Projectname>`, 方便通过 Everything 之类的快速查找指定项目
+2. Root Namespace：把脚本都放置在同一个命名空间下面，这样如果要复用不同项目之间的脚本，即使有重名，复制过来也不容易报错。
+3. 创建项目初始化脚本：
+	1. 创建默认文件夹：\_Project, Scenes, Scripts, Arts, etc.
+	2. 添加一个 asmdf（Assembly Definition File）
+	3. 导出 .unitypackage，方便创建新项目使用
+4. 替换Unity的默认MonoBehaviour代码模板
+	1. Editor 安装路径下的：`Data\Resources\ScriptTemplates
+		eg: `C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Data\Resources\ScriptTemplates`
+	2. 替换掉 `81-C# Script-NewBehaviourScript.cs.txt` 里面的内容
+## 河流效果的实现
+> link: https://youtube.com/shorts/1LevhRBxOsQ
+> date: 2025年12月15日
+
+1. 创造曲线
+2. 添加Mesh，调整宽度
+3. Form texture，如果有高度差，就显示白色浪花
+4. 可漂浮物体：向下射线检测，检测水面
+5. 跟随水流方向飘：对物体添加力，让它沿着曲线方向游动
+
+## 改变单个物体重力
 > 比如我们场景中有多个玩家（PlayerController），希望玩家踩空的时候变成浮空的状态，怎么办？
 
 法一：AddForce
