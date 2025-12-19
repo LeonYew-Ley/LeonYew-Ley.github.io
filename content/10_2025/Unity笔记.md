@@ -151,8 +151,36 @@ void OnCollisionEnter(Collision other)
 ```
 
 # -------------- 实战应用 --------------
-## Unity新项目应该进行的一些设置
+## Unity 自定义工具：快速锁定 Inspector 面板
+> link: https://www.youtube.com/watch?v=-3SnFiJwgRM
+> date: 2025年12月15日
+
+**Inspector锁定**
+Lock() 函数
+实现具体的功能，在这个视频中，是锁定 Inspector 面板。
+
+Valid() 函数
+是一个验证函数，告诉Unity编辑器再特定条件下是否应该启用/禁用关联菜单项。
+eg:
+```csharp
+[MenuItem("Edit/Lock Inspector %L"),true]
+public static bool Valid(){
+	//只有当 Unity 编辑器中存在至少一个当前被追踪或活跃的检视器窗口时，这个“锁定”菜单项才可用
+	return ActiveEditorTracker.sharedTracker.activeEditors.Length != 0;
+}
+```
+通过给 Lock 和 Valid 函数添加共同的属性（Attribute），可以将 Valid 函数的判断绑定到菜单项中，从而影响 Lock 函数的启用。
+
+**Transform 比例约束锁定（利用反射）**
+```csharp
+var propInfo = transform.GetType().GetProperty("constrainProportionScale", BindingFlags.NonPublic | BindingFlags.Instance);
+
+value = (bool) propInfo.GetValue(transform,null)
+propInfo.SetValue(transform, !value, null);
+```
+## Unity 新项目模板
 > link: https://www.youtube.com/watch?v=nVieP57TD20
+> link2（git-amend) : https://www.youtube.com/watch?v=-Wkbi4i2EwU
 > date: 2025年12月15日
 
 1. 项目文件夹命名：`U.<Projectname>`, 方便通过 Everything 之类的快速查找指定项目
@@ -165,6 +193,17 @@ void OnCollisionEnter(Collision other)
 	1. Editor 安装路径下的：`Data\Resources\ScriptTemplates
 		eg: `C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Data\Resources\ScriptTemplates`
 	2. 替换掉 `81-C# Script-NewBehaviourScript.cs.txt` 里面的内容
+
+Git Amend：
+- 每周四下载好最新的 Unity 版本、Hub
+- 模板文件路径：`Unity\Hub\Editor\xxxx.x.xx\Editor\Data\Resources\PackageManager\ProjectTemplates`
+ - 创建模板
+	 - 拿一个Unity的模板 tgz 文件，解压查看
+	 - package/ProjectData~/Asset,ProjectSettings, Packages
+		 - 删除 ProjectSettings 里面的 ProjectVersion.txt
+	 - package/package.json
+		 - 自定义名字、Display Name
+ - 压缩为 tgz 文件，文件名称和 package.json 中保持一致
 ## 河流效果的实现
 > link: https://youtube.com/shorts/1LevhRBxOsQ
 > date: 2025年12月15日
