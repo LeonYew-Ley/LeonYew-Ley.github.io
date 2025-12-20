@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -218,10 +218,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "abe3b1fddb0cb736",
+  "active": "96ece908c8e54334",
   "lastOpenFiles": [
-    "98_Images/paste/Pasted image 20251202012519.png",
     "10_2025/Unity笔记.md",
+    "98_Images/paste/Pasted image 20251202012519.png",
     "index.md",
     "10_2025/2025.md",
     "10_2025/CSharp 语言笔记.md",
