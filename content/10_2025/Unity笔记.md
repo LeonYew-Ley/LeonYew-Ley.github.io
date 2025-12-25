@@ -151,6 +151,22 @@ void OnCollisionEnter(Collision other)
 ```
 
 # -------------- 实战应用 --------------
+## Unity 制作雪花飘落特效
+> link: https://www.youtube.com/watch?v=a_cr6vEcHzc
+> date: 2025年12月25日
+
+核心：利用 Partical System + 两个 Sprite 制作雪花飘落特效
+
+踩坑：要在 UI 前面创建雪花飘落特效，需要把 Canvas 的 Render Mode 设置为 Screen Space-Camera，否则 UI 会一直渲染在最上层。
+
+制作过程：  
+创建粒子系统：Create > Effects > Particle System  
+设置渲染层级：调整 UI Canvas 和 Particle System 的 Render 层级  
+应用自定义雪花贴图：在 PS 中画两个透明背景的雪花并导入 Unity, Render 模块中的 Material 调整为 Sprites-Default （Unity 6 中选择 Sprites-Unlit-Default）  
+调整发射形状：Shape 属性  
+配置雪花飘落属性：Lifetime, Emission, Start Size, Start Color, Noise, Start Speed, Rotation over Lifetime, Pre-warm（直接铺满）
+
+![[b9450f87281c4d50f03c2403865bee6b.mp4]]
 ## Unity 自定义工具：快速锁定 Inspector 面板
 > link: https://www.youtube.com/watch?v=-3SnFiJwgRM
 > date: 2025年12月15日
