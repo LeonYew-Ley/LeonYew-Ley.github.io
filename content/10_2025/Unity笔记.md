@@ -154,6 +154,7 @@ void OnCollisionEnter(Collision other)
 ## Unity 制作雪花飘落特效
 > link: https://www.youtube.com/watch?v=a_cr6vEcHzc
 > date: 2025年12月25日
+> 补充，可以看看 [UIParticle](https://github.com/mob-sakai/ParticleEffectForUGUI)
 
 核心：利用 Partical System + 两个 Sprite 制作雪花飘落特效
 
