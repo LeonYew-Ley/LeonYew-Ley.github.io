@@ -196,10 +196,34 @@ value = (bool) propInfo.GetValue(transform,null)
 propInfo.SetValue(transform, !value, null);
 ```
 ## Unity 新项目模板
-> link: https://www.youtube.com/watch?v=nVieP57TD20
+> link: https://www.youtube.com/watch?v=nVieP57TD20  
 > link2（git-amend) : https://www.youtube.com/watch?v=-Wkbi4i2EwU
 > date: 2025年12月15日
 
+Git Amend：  
+- 每周四下载好最新的 Unity 版本、Hub
+- 准备自己的模板工程
+- 找到 Unity 项目模板文件路径：`Unity\Hub\Editor\xxxx.x.xx\Editor\Data\Resources\PackageManager\ProjectTemplates`
+ - 创建自定义模板
+	 - 拿一个Unity的模板 tgz 文件，解压查看
+	 - 删除以下文件，并把自定义模板工程的相关目录复制过来：
+		 - `package/ProjectData~/Asset` 
+		 - `package/ProjectData~/Packages`
+		 - `package/ProjectData~/ProjectSettings` 
+			 - 删除 ProjectSettings 里面的 ProjectVersion.txt
+	 - 修改 package/package.json 中的字段
+		 - name，包名
+		 - displayName，在 Unity Hub 中显示的模板名称
+ - 压缩为 tgz 文件，文件名称和 package.json 中保持一致
+ - 压缩文件的目录结构示例：
+	 - com.unity.template.projectSample.tgz
+		 - package
+			 - package.json
+			 - ProjectData~
+			 - xxx
+
+---
+Jason Storey：  
 1. 项目文件夹命名：`U.<Projectname>`, 方便通过 Everything 之类的快速查找指定项目
 2. Root Namespace：把脚本都放置在同一个命名空间下面，这样如果要复用不同项目之间的脚本，即使有重名，复制过来也不容易报错。
 3. 创建项目初始化脚本：
@@ -211,16 +235,7 @@ propInfo.SetValue(transform, !value, null);
 		eg: `C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Data\Resources\ScriptTemplates`
 	2. 替换掉 `81-C# Script-NewBehaviourScript.cs.txt` 里面的内容
 
-Git Amend：
-- 每周四下载好最新的 Unity 版本、Hub
-- 模板文件路径：`Unity\Hub\Editor\xxxx.x.xx\Editor\Data\Resources\PackageManager\ProjectTemplates`
- - 创建模板
-	 - 拿一个Unity的模板 tgz 文件，解压查看
-	 - package/ProjectData~/Asset,ProjectSettings, Packages
-		 - 删除 ProjectSettings 里面的 ProjectVersion.txt
-	 - package/package.json
-		 - 自定义名字、Display Name
- - 压缩为 tgz 文件，文件名称和 package.json 中保持一致
+
 ## 河流效果的实现
 > link: https://youtube.com/shorts/1LevhRBxOsQ
 > date: 2025年12月15日
