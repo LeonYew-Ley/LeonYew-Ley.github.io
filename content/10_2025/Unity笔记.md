@@ -151,6 +151,24 @@ void OnCollisionEnter(Collision other)
 ```
 
 # -------------- 实战应用 --------------
+## Unity 开发中的 5 个架构小细节
+> link: https://www.youtube.com/watch?v=68SJ9m1sq0U  
+> date: 2026年1月7日
+
+**接口 Interfaces**  
+eg. 使用 IDamageable 接口，解耦武器、玩家、敌人  
+武器只用对实现了 IDamageable 接口的对象造成上海，调用公共方法。武器也能使用IWeapon 来使用公共方法开火。
+
+Test Framework
+使用接口可以更加方便的编写单元测试。
+可以使用 Editor Mode 来测试，效率更高，避免了进入 Play Mode 的开销。
+
+**将逻辑从 Mono Behaviour 中分离出来**
+eg. 将武器类的逻辑单独用 `WeaponLogic` 类包装，`Weapon` 类只持有一个逻辑实例，Fire 方法直接调用实际逻辑。  
+
+收益：单元测试中不用再创建 Mono behaviour（GameObject），也不用清理对象，而是直接创建 Logic 类来验证逻辑。
+
+
 ## Unity 制作雪花飘落特效
 > link: https://www.youtube.com/watch?v=a_cr6vEcHzc
 > date: 2025年12月25日

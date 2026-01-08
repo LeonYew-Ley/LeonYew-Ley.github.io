@@ -30,13 +30,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10_2025/2025.md",
+                "file": "10_2025/Years (EST 2025).md",
                 "mode": "source",
                 "source": false
               },
               "pinned": true,
               "icon": "lucide-file",
-              "title": "2025"
+              "title": "Years (EST 2025)"
             }
           },
           {
@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -125,7 +125,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "134364465d3f506a",
@@ -189,13 +190,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/CS大法好 🙏.md",
+                "file": "10_2025/Years (EST 2025).md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "CS大法好 🙏 的大纲"
+              "title": "Years (EST 2025) 的大纲"
             }
           }
         ],
@@ -203,7 +204,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 327.5
+    "width": 327.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -216,11 +218,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "ec55097ebd80c063",
+  "active": "96ece908c8e54334",
   "lastOpenFiles": [
-    "10_2025/CSharp 语言笔记.md",
     "10_2025/Unity笔记.md",
-    "10_2025/2025.md",
+    "10_2025/CS大法好 🙏.md",
+    "10_2025/CSharp 语言笔记.md",
+    "10_2025/Years (EST 2025).md",
     "98_Images/paste/b9450f87281c4d50f03c2403865bee6b.mp4",
     "2025-12-20-求生之路2玩一代地图崩溃报错：info_transitioning_player.md",
     "98_Images/paste/Pasted image 20251202012519.png",
@@ -247,7 +250,6 @@
     "10_2025/《我与地坛》.md",
     "亲密关系.md",
     "98_Images/paste/Pasted image 20251202013729.png",
-    "10_2025/CS大法好 🙏.md",
     "10_2025/《焦虑的人》.md",
     "10_2025/2025 编程模式、框架.md",
     "10_2025/📖 极简读书笔记.md",
