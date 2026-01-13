@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -190,13 +190,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_2025/Years (EST 2025).md",
+                "file": "10_2025/Unity笔记.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Years (EST 2025) 的大纲"
+              "title": "Unity笔记 的大纲"
             }
           }
         ],
@@ -218,16 +218,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "96ece908c8e54334",
+  "active": "abe3b1fddb0cb736",
   "lastOpenFiles": [
-    "10_2025/Unity笔记.md",
     "10_2025/CS大法好 🙏.md",
-    "10_2025/CSharp 语言笔记.md",
     "10_2025/Years (EST 2025).md",
+    "index.md",
+    "10_2025/Unity笔记.md",
+    "10_2025/CSharp 语言笔记.md",
     "98_Images/paste/b9450f87281c4d50f03c2403865bee6b.mp4",
     "2025-12-20-求生之路2玩一代地图崩溃报错：info_transitioning_player.md",
     "98_Images/paste/Pasted image 20251202012519.png",
-    "index.md",
     "98_Images/paste/Pasted image 20251212235843.png",
     "Pasted image 20251212235146.png.md",
     "98_Images/paste/Pasted image 20251212235146.png",

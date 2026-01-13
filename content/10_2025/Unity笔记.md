@@ -153,7 +153,7 @@ void OnCollisionEnter(Collision other)
 # -------------- 实战应用 --------------
 ## Unity 开发中的 5 个架构小细节
 > link: https://www.youtube.com/watch?v=68SJ9m1sq0U  
-> date: 2026年1月7日
+> date: 2026年1月7日, 2026年1月13日
 
 **接口 Interfaces**  
 eg. 使用 IDamageable 接口，解耦武器、玩家、敌人  
@@ -168,6 +168,15 @@ eg. 将武器类的逻辑单独用 `WeaponLogic` 类包装，`Weapon` 类只持�
 
 收益：单元测试中不用再创建 Mono behaviour（GameObject），也不用清理对象，而是直接创建 Logic 类来验证逻辑。
 
+**分离数据**  
+e.g. WeaponConfig，从WeaponConfig中读取武器攻击等数据。
+
+**事件驱动**  
+事件可以把类与类之间解耦  
+e.g. PlayerInput 和 Player，PlayerInput监听按下按键，并发出 OnFire 事件；Player 只响应 OnFire 事件。
+
+**注册表**
+拥有一个公共注册表，比如敌人的注册表、地图元素、可拾取物品，各类可以直接拿到、筛选，比如标记最近的敌人。 
 
 ## Unity 制作雪花飘落特效
 > link: https://www.youtube.com/watch?v=a_cr6vEcHzc
