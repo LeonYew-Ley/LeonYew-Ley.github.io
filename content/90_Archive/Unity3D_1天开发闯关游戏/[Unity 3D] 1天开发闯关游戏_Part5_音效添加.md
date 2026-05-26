@@ -1,5 +1,6 @@
 ---
 id: Unity3D-1day-Part5
+date: '2024-01-10'
 ---
 
 > 标题：[Unity 3D] 1天开发闯关游戏_Day1_玩家交互

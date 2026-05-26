@@ -1,3 +1,6 @@
+---
+date: '2024-01-13'
+---
 > 标题：Steam Tools 使用教程和游戏本体下载配置
 > 作者：[LeonYew](https://leonyew.fun/)
 > 日期：2024年1月13日

@@ -1,8 +1,11 @@
 ---
 slug: unity-model-shadow-fix
-title: "Unity模型光照阴影修复"
+title: Unity模型光照阴影修复
 authors: leonyew
-tags: [unity, gamedev]
+tags:
+  - unity
+  - gamedev
+date: '2025-06-02'
 ---
 
 > Unity中部分模型没有显示阴影，我定义了NPC之后没有显示NPC的阴影。

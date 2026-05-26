@@ -1,8 +1,12 @@
 ---
 slug: google-dragon-boat
-title: "Google的龙舟GIF"
-authors: [leonyew]
-tags: [google, collect]
+title: Google的龙舟GIF
+authors:
+  - leonyew
+tags:
+  - google
+  - collect
+date: '2025-06-04'
 ---
 
 收藏一下谷歌端午节赛龙舟的GIF

@@ -1,5 +1,6 @@
 ---
 id: Unity3D-1day-Part3
+date: '2024-01-08'
 ---
 
 > 标题：[Unity 3D] 1天开发闯关游戏_Part3_动画部分

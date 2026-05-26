@@ -1,8 +1,13 @@
 ---
 slug: UnityToGitHub
 title: 如何将Unity项目备份至Github
-authors: [leonyew]
-tags: [unity, git, github]
+authors:
+  - leonyew
+tags:
+  - unity
+  - git
+  - github
+date: '2025-06-20'
 ---
 
 本文讲述如何将Unity项目备份到Github，包括`.gitignore`的设置

@@ -1,8 +1,11 @@
 ---
 slug: TakeDailyNotes
 title: 记日记的好处
-authors: [leonyew]
-tags: [life]
+authors:
+  - leonyew
+tags:
+  - life
+date: '2025-08-10'
 ---
 
 ## 每日总结

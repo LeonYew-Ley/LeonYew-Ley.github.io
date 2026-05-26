@@ -1,5 +1,6 @@
 ---
 id: Unity3D-1day-Part0
+date: '2024-01-08'
 ---
 > 标题：[Unity 3D] 1天开发闯关游戏_Part0_项目准备
 > 链接：[Yew's Blog](http://ley.asia/)

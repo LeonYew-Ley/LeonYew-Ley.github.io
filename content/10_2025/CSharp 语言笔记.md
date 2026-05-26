@@ -1,3 +1,6 @@
+---
+date: '2026-05-16'
+---
 # C# 语言笔记 ——————————————
 > 本文档结合[《C#语言入门讲解》](https://www.bilibili.com/video/BV1wx411K7rb)和《C# 12.0 本质论》提炼C#相关知识
 > 课堂笔记： https://www.yuque.com/yuejiangliu/dotnet/timothy-csharp-001
