@@ -2,8 +2,6 @@ name: Deploy Quartz 5 to GitHub Pages
 
 on:
   push:
-    branches:
-      - v5
   workflow_dispatch:
 
 permissions:
