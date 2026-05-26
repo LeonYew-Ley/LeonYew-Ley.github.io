@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
 configuration:
-  pageTitle: "Yew's Notes"
+  pageTitle: Yew's Notes
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
@@ -12,7 +12,6 @@ configuration:
     - private
     - templates
     - .obsidian
-  # 以下目录仅本地 Obsidian 使用，不参与站点构建
     - "**/99_RES_private/**"
     - "**/10_2025/**"
     - "**/80_ACCUMULATION/**"
@@ -200,8 +199,6 @@ plugins:
       links:
         GitHub: https://github.com/jackyzha0/quartz
         Discord Community: https://discord.gg/cRFFHYye7t
-  - source: github:quartz-community/recent-notes
-    enabled: false
   - source: github:quartz-community/spacer
     enabled: true
     options: {}
