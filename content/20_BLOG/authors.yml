@@ -1,0 +1,40 @@
+leonyew:
+  name: Leon Yew
+  title: Unity Junior Developer
+  url: https://github.com/LeonYew-Ley
+  image_url: https://github.com/LeonYew-Ley.png
+  socials:
+    github: LeonYew-Ley
+    website: https://leonyew.space/
+
+huangbaiwei:
+  name: H-Bole
+  title: Unity Developer
+  url: https://github.com/H-Bole
+  image_url: https://github.com/H-Bole.png
+  socials:
+    github: H-Bole
+
+slorber:
+  name: Sébastien Lorber
+  title: Docusaurus maintainer
+  url: https://sebastienlorber.com
+  image_url: https://github.com/slorber.png
+  page:
+    # customize the url of the author page at /blog/authors/<permalink>
+    permalink: '/all-sebastien-lorber-articles'
+  socials:
+    x: sebastienlorber
+    linkedin: sebastienlorber
+    github: slorber
+    newsletter: https://thisweekinreact.com
+
+yangshun:
+  name: Yangshun Tay
+  title: Front End Engineer @ Facebook
+  url: https://github.com/yangshun
+  image_url: https://github.com/yangshun.png
+  page: true
+  socials:
+    x: yangshunz
+    github: yangshun

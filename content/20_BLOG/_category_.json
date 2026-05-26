@@ -1,0 +1,11 @@
+{
+  "label": "💻 编程笔记",
+  "position": 5,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "编程笔记 | Tech Notes"
+  }
+}

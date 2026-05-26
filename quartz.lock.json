@@ -49,12 +49,6 @@
       "commit": "ec4c81c91da13a6f6c2cbe1656daf5c14575dab3",
       "installedAt": "2026-05-24T15:36:16.443Z"
     },
-    "comments": {
-      "source": "github:quartz-community/comments",
-      "resolved": "https://github.com/quartz-community/comments.git",
-      "commit": "278115200a9bacfc0ee4695b200a5843d15517f3",
-      "installedAt": "2026-05-24T15:36:16.462Z"
-    },
     "content-index": {
       "source": "github:quartz-community/content-index",
       "resolved": "https://github.com/quartz-community/content-index.git",
@@ -102,12 +96,6 @@
       "resolved": "https://github.com/quartz-community/encrypted-pages.git",
       "commit": "e0e08e7afa40b97909fb24fd7509ddaa10116425",
       "installedAt": "2026-05-24T15:36:17.007Z"
-    },
-    "explicit-publish": {
-      "source": "github:quartz-community/explicit-publish",
-      "resolved": "https://github.com/quartz-community/explicit-publish.git",
-      "commit": "4afb630a1cc9034267beb93c928e81d0fa2f4d4b",
-      "installedAt": "2026-05-24T15:36:16.960Z"
     },
     "explorer": {
       "source": "github:quartz-community/explorer",
@@ -169,46 +157,17 @@
       "commit": "186d6bd990a1b88ab35c4f66ea4f257f1e7b4a51",
       "installedAt": "2026-05-25T23:55:00.345Z"
     },
-    "obsidian-plugin-excalidraw": {
-      "source": "github:quartz-community/obsidian-plugin-excalidraw",
-      "resolved": "https://github.com/quartz-community/obsidian-plugin-excalidraw.git",
-      "commit": "9c5ff6bd6d2ee27814aeaf98ac4ddfd025a985fa",
-      "installedAt": "2026-05-25T17:40:01.376Z"
-    },
-    "obsidian-plugin-ttrpg-tools-maps": {
-      "source": "github:quartz-community/obsidian-plugin-ttrpg-tools-maps",
-      "resolved": "https://github.com/quartz-community/obsidian-plugin-ttrpg-tools-maps.git",
-      "commit": "c43314724a7606dd18b90972c457f593ccded5f5",
-      "installedAt": "2026-05-24T15:36:16.983Z"
-    },
     "og-image": {
       "source": "github:quartz-community/og-image",
       "resolved": "https://github.com/quartz-community/og-image.git",
       "commit": "52ea59e2b40dde77abf7fd88eddecf161e671085",
       "installedAt": "2026-05-24T15:36:16.999Z"
     },
-    "ox-hugo": {
-      "source": "github:quartz-community/ox-hugo",
-      "resolved": "https://github.com/quartz-community/ox-hugo.git",
-      "commit": "832871da9ab33d52f904456c1a5e14f1b2057d83",
-      "installedAt": "2026-05-24T15:36:16.990Z"
-    },
     "page-title": {
       "source": "github:quartz-community/page-title",
       "resolved": "https://github.com/quartz-community/page-title.git",
       "commit": "a53cf02ce7faca400bcf3cfeed47eb860329e534",
       "installedAt": "2026-05-24T15:36:16.998Z"
-    },
-    "quartz-themes": {
-      "source": {
-        "name": "quartz-themes",
-        "repo": "github:saberzero1/quartz-themes",
-        "subdir": "plugin"
-      },
-      "resolved": "https://github.com/saberzero1/quartz-themes.git",
-      "commit": "b82021d7866c11353a0cc55b75ac3198d988d7d7",
-      "subdir": "plugin",
-      "installedAt": "2026-05-25T15:05:52.311Z"
     },
     "reader-mode": {
       "source": "github:quartz-community/reader-mode",
@@ -228,12 +187,6 @@
       "commit": "0a51a4c6abb3c86961a9bbf46f4538da87fcf9f8",
       "installedAt": "2026-05-24T15:36:17.446Z"
     },
-    "roam": {
-      "source": "github:quartz-community/roam",
-      "resolved": "https://github.com/quartz-community/roam.git",
-      "commit": "b2aad70fdf548d07b8fd28df9edbdba7f256f166",
-      "installedAt": "2026-05-24T15:36:17.448Z"
-    },
     "search": {
       "source": "github:quartz-community/search",
       "resolved": "https://github.com/quartz-community/search.git",
@@ -245,12 +198,6 @@
       "resolved": "https://github.com/quartz-community/spacer.git",
       "commit": "64b135dcfb78c4911f8c42d942872d645cd2a456",
       "installedAt": "2026-05-24T15:36:17.428Z"
-    },
-    "stacked-pages": {
-      "source": "github:quartz-community/stacked-pages",
-      "resolved": "https://github.com/quartz-community/stacked-pages.git",
-      "commit": "9d67b8dedab5c27db98afd26dfa773e5003b0446",
-      "installedAt": "2026-05-24T15:36:17.444Z"
     },
     "syntax-highlighting": {
       "source": "github:quartz-community/syntax-highlighting",

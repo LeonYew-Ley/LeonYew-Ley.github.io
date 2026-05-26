@@ -1,0 +1,491 @@
+---
+date: '2026-01-13'
+---
+> [!todo]
+> - Photon isMine
+> - RPC
+> - ECS
+
+
+## 物理 Rigidbody
+### 代码：Rigidbody 不能被移除
+如题，因为 Rigidbody 继承自 Component 组件，而常见的脚本、Collider 都继承自 Behaviour。
+### 定义：静态碰撞体和动态碰撞体
+> 区别，没带 Rigidbody 和带了 Rigidbody
+
+Static Collider，指的是不带 Rigidbody 的 Collider
+Dynamic Collider，带了 Rigidbody 组件的 Collider
+### 碰撞检测（Continuous Collision Detection, CCD）
+> Unity Manual: https://docs.unity3d.com/6000.2/Documentation/Manual/ContinuousCollisionDetection.html
+
+**Collision Dectation：**
+- **Discrete**，离散，每次物理检测检查碰撞，效率最高，但容易漏掉
+
+除此以外，下面三种 Continuous 都是提前预算碰撞来实现的碰撞检测
+
+- **Continuous**，持续检查与静态碰撞体的碰撞（不带 Rigidbody 的 Collider）
+- **Continuous Dynamic**，持续监测 Rigidbody 与静态碰撞体和动态碰撞体的碰撞
+
+这两种检测方式是基于 [Sweep-based CCD](https://docs.unity3d.com/6000.2/Documentation/Manual/sweep-based-ccd.html)，最精确的检测方式同时也最耗性能，但不能预测旋转，只能预测线性运动（比如一根棍子高速旋转的场景，检测不到棍子扫到的物体）
+
+- **Continuous Speculative**，推测检测
+
+基于 [Speculative CCD](https://docs.unity3d.com/6000.2/Documentation/Manual/speculative-ccd.html) ，支持线性运动和角运动，采用 AABB 包围盒检测，精确度相比于 Sweep-based CCD 更低，预测结果可能出错导致偏离预期轨迹。
+
+> [!tip]
+> 碰撞检测推荐尝试顺序：
+> - Discrete
+> - Continuous Speculative
+> - Continuous
+> - Continuous Dynamic
+
+**更完整的选择顺序：**
+> 还要更完整的检测顺序建议自己去读一下 Unity 文档，表格表示并没有把文档中的情况都涵盖到位，还是需要自己去看一下各种算法怎么实现的，缺陷可能在哪里才能选择最适合自己的检测模式。
+
+**视频推荐：**
+【Unity】3分钟搞懂Unity的4种碰撞检测模式 CC中字熟 https://www.bilibili.com/video/BV1de4y1E7Qm/
+### Tip：不要对刚体应用 Transform
+
+ ## 碰撞器 Collider & Trigger
+
+### 使用 Layer 过滤来优化碰撞检测效率
+> 在 Unity 开发中，`Collider` 和 `Trigger` 的检测效率对性能有很大影响，尤其是在场景中存在大量物体时。一个常见的优化手段就是使用 **Layer** 来进行碰撞过滤，而不是依赖 Tag 或逐个对象判断。
+
+
+**为什么用 Layer 而不是 Tag？**
+- **性能差异**：Layer 在 Unity 内部使用整数表示，而 Tag 是字符串，整数比较远比字符串比较高效。
+- **位运算支持**：LayerMask 可以通过位屏蔽（二元运算）进行快速过滤，非常适合批量判断。
+
+**比较单个Layer：**
+```csharp
+//这样可以将字符串名称转换成 Layer 的整数 ID。
+int layerId = LayerMask.NameToLayer("Enemy");
+
+if (other.gameObject.layer == layerId) 
+{
+	Debug.Log("检测到敌人"); 
+}
+```
+
+**多个 Layer 的比较：**
+> 当需要判断一个物体是否属于多个目标 Layer 时，推荐使用 `LayerMask` 配合位运算：
+
+```csharp
+public LayerMask targetLayers;
+void OnTriggerEnter(Collider other)
+{
+	if ((targetLayers.value & (1 << other.gameObject.layer)) != 0) 
+	{
+		Debug.Log("进入目标 Layer 范围");
+	} 
+}
+```
+
+这里的关键是 `(1 << other.gameObject.layer)`，它会生成对应 Layer 的掩码，然后与目标 `LayerMask` 做按位与运算。如果结果不为 0，就说明当前物体的 Layer 在目标集合内。
+
+**讲讲位运算和 LayerMask 的存储方式：**
+
+LayerMask 的存储方式：
+
+Unity 一共有 32 个 Layer（编号 0–31）。每个物体的 gameObject.layer 是一个 int，表示它在哪个 Layer 上（例如 Layer 8 = "Player"）。
+
+LayerMask 本质上是一个 32 位整数，每一位表示一个 Layer 是否启用：
+
+- 1 << 8 → 表示第 8 个 Layer（Player）。
+- 1 << 9 → 表示第 9 个 Layer（Enemy）。
+- 1 << 8 | 1 << 9 → 同时包含 Player 和 Enemy 两个 Layer。
+
+
+`<<` 左移运算：
+> 会把一个数的二进制 **整体往左移动 N 位**，右边空出来的位置补 0
+```csharp
+// x << n   =   x * 2^n
+1 << 0   // 0000...0001 → 结果 = 1
+1 << 1   // 0000...0010 → 结果 = 2
+1 << 2   // 0000...0100 → 结果 = 4
+1 << 3   // 0000...1000 → 结果 = 8
+```
+
+`&`按位与运算符（bitwise AND）：
+> 对两个整数的二进制表示逐位比较：如果两个数在同一位上 **都是 1** 则结果为 1。否则结果为 0。
+
+`|` 按位或运算符（bitwise OR）：
+> 对两个整数的二进制表示逐位比较：只要某一位上 有一个是 1 , 结果就是 1。两个都为 0 结果才是 0。
+
+可以用`|` 来合并多个 Layer 掩码：
+```csharp
+// 只包含 Layer 8
+int maskA = 1 << 8;  
+
+// 只包含 Layer 9
+int maskB = 1 << 9;  
+
+// 合并两个 → 同时包含 Layer 8 和 9
+int maskAB = maskA | maskB;  
+```
+
+位屏蔽（bitmask）：
+> **位屏蔽**就是用一个整数（`LayerMask`）的二进制位来表示一组 Layer 是否被选中。
+
+综上，对于下面代码就很好理解了：
+```csharp
+void OnCollisionEnter(Collision other)
+{
+	// 将要检测的 targetLayers 的 value 与 碰撞进来的 other.gameObject.layer 进行比较，如果不为 0，则代表 targetLayer 包含 other.gameObject.layer
+	if ((targetLayers.value & (1 << other.gameObject.layer)) != 0)
+	{
+	    // 命中
+	}
+}
+```
+
+或者我们也可以这样写：
+```csharp
+void OnCollisionEnter(Collision other)
+{
+	// 如果 targetLayers 和 other.gameObject.layer 进行按位或运算（也就是合并）之后，依旧和 targetLayers 相等，就表示 targetLayers 包含 other.gameObject.layer
+
+	// 比如 targetLayers 为 0011, other.gameObject.layer = 1000, 按位或运算之后为 1011, 就不对，表示没有命中； 而如果是 0011 和 0001 进行按位或运算之后，依旧是 0011
+	if(targetLayers == (targetLayers | (1 << other.gameObject.layer)))
+	{
+		// 命中
+	}
+}
+```
+
+# -------------- 实战应用 --------------
+## Unity 开发中的 5 个架构小细节
+> link: https://www.youtube.com/watch?v=68SJ9m1sq0U  
+> date: 2026年1月7日, 2026年1月13日
+
+**接口 Interfaces**  
+eg. 使用 IDamageable 接口，解耦武器、玩家、敌人  
+武器只用对实现了 IDamageable 接口的对象造成上海，调用公共方法。武器也能使用IWeapon 来使用公共方法开火。
+
+Test Framework
+使用接口可以更加方便的编写单元测试。
+可以使用 Editor Mode 来测试，效率更高，避免了进入 Play Mode 的开销。
+
+**将逻辑从 Mono Behaviour 中分离出来**
+eg. 将武器类的逻辑单独用 `WeaponLogic` 类包装，`Weapon` 类只持有一个逻辑实例，Fire 方法直接调用实际逻辑。  
+
+收益：单元测试中不用再创建 Mono behaviour（GameObject），也不用清理对象，而是直接创建 Logic 类来验证逻辑。
+
+**分离数据**  
+e.g. WeaponConfig，从WeaponConfig中读取武器攻击等数据。
+
+**事件驱动**  
+事件可以把类与类之间解耦  
+e.g. PlayerInput 和 Player，PlayerInput监听按下按键，并发出 OnFire 事件；Player 只响应 OnFire 事件。
+
+**注册表**
+拥有一个公共注册表，比如敌人的注册表、地图元素、可拾取物品，各类可以直接拿到、筛选，比如标记最近的敌人。 
+
+## Unity 制作雪花飘落特效
+> link: https://www.youtube.com/watch?v=a_cr6vEcHzc
+> date: 2025年12月25日
+> 补充，可以看看 [UIParticle](https://github.com/mob-sakai/ParticleEffectForUGUI)
+
+核心：利用 Partical System + 两个 Sprite 制作雪花飘落特效
+
+踩坑：要在 UI 前面创建雪花飘落特效，需要把 Canvas 的 Render Mode 设置为 Screen Space-Camera，否则 UI 会一直渲染在最上层。
+
+制作过程：  
+创建粒子系统：Create > Effects > Particle System  
+设置渲染层级：调整 UI Canvas 和 Particle System 的 Render 层级  
+应用自定义雪花贴图：在 PS 中画两个透明背景的雪花并导入 Unity, Render 模块中的 Material 调整为 Sprites-Default （Unity 6 中选择 Sprites-Unlit-Default）  
+调整发射形状：Shape 属性  
+配置雪花飘落属性：Lifetime, Emission, Start Size, Start Color, Noise, Start Speed, Rotation over Lifetime, Pre-warm（直接铺满）
+
+![[b9450f87281c4d50f03c2403865bee6b.mp4]]
+## Unity 自定义工具：快速锁定 Inspector 面板
+> link: https://www.youtube.com/watch?v=-3SnFiJwgRM
+> date: 2025年12月15日
+
+**Inspector锁定**
+Lock() 函数
+实现具体的功能，在这个视频中，是锁定 Inspector 面板。
+
+Valid() 函数
+是一个验证函数，告诉Unity编辑器再特定条件下是否应该启用/禁用关联菜单项。
+eg:
+```csharp
+[MenuItem("Edit/Lock Inspector %L"),true]
+public static bool Valid(){
+	//只有当 Unity 编辑器中存在至少一个当前被追踪或活跃的检视器窗口时，这个“锁定”菜单项才可用
+	return ActiveEditorTracker.sharedTracker.activeEditors.Length != 0;
+}
+```
+通过给 Lock 和 Valid 函数添加共同的属性（Attribute），可以将 Valid 函数的判断绑定到菜单项中，从而影响 Lock 函数的启用。
+
+**Transform 比例约束锁定（利用反射）**
+```csharp
+var propInfo = transform.GetType().GetProperty("constrainProportionScale", BindingFlags.NonPublic | BindingFlags.Instance);
+
+value = (bool) propInfo.GetValue(transform,null)
+propInfo.SetValue(transform, !value, null);
+```
+## Unity 新项目模板
+> link: https://www.youtube.com/watch?v=nVieP57TD20  
+> link2（git-amend) : https://www.youtube.com/watch?v=-Wkbi4i2EwU
+> date: 2025年12月15日
+
+Git Amend：  
+- 每周四下载好最新的 Unity 版本、Hub
+- 准备自己的模板工程
+- 找到 Unity 项目模板文件路径：`Unity\Hub\Editor\xxxx.x.xx\Editor\Data\Resources\PackageManager\ProjectTemplates`
+ - 创建自定义模板
+	 - 拿一个Unity的模板 tgz 文件，解压查看
+	 - 删除以下文件，并把自定义模板工程的相关目录复制过来：
+		 - `package/ProjectData~/Asset` 
+		 - `package/ProjectData~/Packages`
+		 - `package/ProjectData~/ProjectSettings` 
+			 - 删除 ProjectSettings 里面的 ProjectVersion.txt
+	 - 修改 package/package.json 中的字段
+		 - name，包名
+		 - displayName，在 Unity Hub 中显示的模板名称
+ - 压缩为 tgz 文件，文件名称和 package.json 中保持一致
+ - 压缩文件的目录结构示例：
+	 - com.unity.template.projectSample.tgz
+		 - package
+			 - package.json
+			 - ProjectData~
+			 - xxx
+
+---
+Jason Storey：  
+1. 项目文件夹命名：`U.<Projectname>`, 方便通过 Everything 之类的快速查找指定项目
+2. Root Namespace：把脚本都放置在同一个命名空间下面，这样如果要复用不同项目之间的脚本，即使有重名，复制过来也不容易报错。
+3. 创建项目初始化脚本：
+	1. 创建默认文件夹：\_Project, Scenes, Scripts, Arts, etc.
+	2. 添加一个 asmdf（Assembly Definition File）
+	3. 导出 .unitypackage，方便创建新项目使用
+4. 替换Unity的默认MonoBehaviour代码模板
+	1. Editor 安装路径下的：`Data\Resources\ScriptTemplates
+		eg: `C:\Program Files\Unity\Hub\Editor\2020.3.16f1\Editor\Data\Resources\ScriptTemplates`
+	2. 替换掉 `81-C# Script-NewBehaviourScript.cs.txt` 里面的内容
+
+
+## 河流效果的实现
+> link: https://youtube.com/shorts/1LevhRBxOsQ
+> date: 2025年12月15日
+
+1. 创造曲线
+2. 添加Mesh，调整宽度
+3. Form texture，如果有高度差，就显示白色浪花
+4. 可漂浮物体：向下射线检测，检测水面
+5. 跟随水流方向飘：对物体添加力，让它沿着曲线方向游动
+
+## 改变单个物体重力
+> 比如我们场景中有多个玩家（PlayerController），希望玩家踩空的时候变成浮空的状态，怎么办？
+
+法一：AddForce
+法二：修改 Drag & AnglerDrag
+
+## 利用数据驱动Unity中的游戏系统
+> link: https://www.youtube.com/watch?v=6qd22ulEds4
+> 
+> date: 2025年12月5日、2025年12月9日
+
+**SOAP**
+> Scriptable Object Architecture Pattern
+
+SOAP 的核心是让 GameObjects 之间解耦，而通过读写共享项目中的数据来完成功能。
+
+**数据驱动示例：技能组成**  
+技能：AbilityData（ScriptableObject），技能由多个 AbilityEffect 组成，Effect 尽量原子化，比如击退、扣血、减速等等。  
+数据对象：AbilityData，只维护一个 `List<AbilityEfeect> effects` 列表
+
+**技能的应用：**  
+在玩家身上添加组件：Ability Executor，传入 AbilityData、Target。在组件的声明周期函数中检测按键，随后响应函数。  
+响应函数中，遍历 AbilityData 中的 Effects，然后调用 Effects 的 Execute 方法，挨个执行。
+
+**实际的流程：**  
+创建技能、选择Effects，然后把技能拖到玩家身上的 Ability Executor 中
+
+**自定义属性Drawer**
+> Odin 能实现的，自己写一定能实现。不过视频中的例子通过遍历派生类来生成下拉框的数据，要是技能类型多了起来，感觉不是个很好的选择，还是 Odin 的拖拽输入框比较好用。
+ 
+
+## Rider 的使用以及对 Unity 的特殊优化
+> link: https://youtu.be/h564F6pLOsE?si=LPW56koTyZNi6N3d
+> link2: https://www.bilibili.com/video/BV14jDHYuE4U/
+> link3: https://youtu.be/ra-fpMO5tpA?si=M8H1k3FbEQNtcN_t （没看，有点长，happyNerd的视频）
+> 
+> date: 2025年12月4日
+
+- 跳转到 Unity Manul
+- 可以查看挂载了该类关联的 Prefab、Object
+- 可以查看使用了该类的场景（动态加载应该不能查看）
+- 可以查看为什么有些运算符不建议使用，比如不应该对 Monobehaviour 使用 `?.` 运算符，并且可以链接跳转到 github 相关的链接中
+- Profile 分析代码优化
+- 依赖断点
+
+## transform 是否有必要缓存
+> link: https://www.youtube.com/watch?v=uTJe7M1E3Tg
+> 
+> date: 2025年12月2日
+
+结论：
+- IDE 中测试：缓存这个行为本身就会有 30% 的性能提升，特别是在 Update() 方法中频繁调用时。
+- Unity 中测试：每秒会有 3 帧的性能提升；帧时间上，有 10% 的性能提升。
+
+其他收获：
+- 每个程序员都应该自己测试了再持有结论
+- 应该做自己的基准测试 BenchMark
+- transform 在 Unity 底层是使用 C++ 跨界访问。
+
+论证过程：
+- 写 C# 代码，在 IDE 中比较，有差异
+- 在 Unity 中运行，有差异
+- 打包运行 Windows Standalone，没差异
+	- Json 论坛中的人运行，有差异
+	- 问题出在 VSync，会弥补帧差距
+
+乞题谬误
+> [Begging the question](https://www.google.com/search?q=Begging+the+question&oq=%E4%B9%9E%E9%A2%98&gs_lcrp=EgZjaHJvbWUqBwgBEAAYgAQyCQgAEEUYORiABDIHCAEQABiABDIGCAIQABgeMgcIAxAAGO8FMgoIBBAAGIAEGKIEMgcIBRAAGO8FMgcIBhAAGO8FMgcIBxAAGO8F0gEJMTAzMzhqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8&mstk=AUtExfBs-Q2V2yHeuz-HP1fo2uLrXN7U_Ab46W6ZIGjx-2HbDxh0Ldx4xAIB5w0WeeCe5KXadxouvJB3smxQeIu9Ez4w4Fv2OQ59FPKtg6Q_DPV-_o2gsLlOlphj11ll6LsMyPwO-jeGzq-ujMHKHW-GJ7okXRvMfbsq50edg1IvX9rM6IY&csui=3&ved=2ahUKEwjcw8i3qJ6RAxXdhKgCHRjoIqsQgK4QegQIARAB), 一种逻辑谬误，在论证中把尚未被证实的结论当成理所当然的前提，从而未能提供任何真正的证据
+
+涅槃谬误
+>涅槃謬誤（英語：nirvana fallacy）或完美主義謬誤（perfectionist fallacy）是一種非形式謬誤，係宣稱某個解決方案因為無法做到涅槃（完美），所以該方案便沒用。
+
+稻草人谬误（straw man) 
+> 稻草人谬误是一种在论证中通过歪曲、夸张或虚构对方论点，转而攻击被篡改后的替身论点（即“稻草人”）的非形式逻辑谬误。其核心特征为将原论点简化为极端或荒谬形态，例如错误引用、曲解原意或强加未提出的观点。
+
+## 避障第三人称摄像机的实现
+> link: https://www.youtube.com/watch?v=QrDgrCO22aU
+> 
+> date: 2025年12月2日
+
+原理：从玩家位置向摄像机理想位置发送一条射线，如果检测到障碍物，就将摄像机的位置应用为 hit.distance - minimumDistance（摄像机距墙最小距离）
+
+构成：三部分——Hierarchy保持相对位置、Controller通过读取输入设置旋转、RayCaster 通过射线更新位置。
+
+这里有四个层级：
+- CamRoot：放在 Player 下面，设置 LocalOffset 为玩家头顶
+	- CamControlls：挂CamController和CamDistanceRayCaster
+		- CamTarget：LocalOffset 设置为玩家身后
+			- CamTransform：MainCamera，摄像机本体。
+
+![[Pasted image 20251202013729.png]]
+
+CamRoot是一直在玩家头顶的。
+CamControlls上的CamController会读取输入控制自身旋转，这样就控制了CamTarget和相机本体相对于玩家的旋转。
+CamControlls上的 RayCaster 组件则是控制相机本地的 position，用来避障。
+
+![[Pasted image 20251202012519.png]]
+
+原理还是很简单，但是之前在地铁上看的时候没搞懂代码里面的变量和 Hierarchy 面板中的Obj 的对应关系，一直搁置，今天运行了一下工程才搞懂。
+
+## 状态机
+状态机负责管理状态切换，每个状态需要包含：Enter、（Loop）、Exit
+
+## Demo复盘：InputSystem与多人分屏
+> 有空再来整理吧，参考链接：https://www.bilibili.com/video/BV1HA411d7YQ/
+- InputActions
+  - Control Schemes
+    - 根据InputSystem发出的事件，可以改变UI的图标
+- PlayerInput组件
+  - 提供一个玩家控制，一个输入与
+  - 标识接受哪一个控制器的输入
+  - Actions、键位映射
+  - Auto-Switch：用户自动切换设备
+  - UI Input Module（不同玩家不同UI）
+  - Camera：切分镜头
+  - Behavior
+    - SendMessage（调用玩家Obj其他组件上的函数，下面举例了）
+      - 反射（Private也可以调用）
+      - OnMove
+    - Invoke Unity Events
+      - 拖脚本函数
+    - ★Invoke C Sharp Events
+      -  
+- 脚本框架
+  - PlayerPawn（玩家身体）
+    - SetMovement
+  - PlayerController（读取输入）
+- 每个玩家
+  - Player(Prefab)
+    - 模型/Obj
+    - PlayerPawn
+  - PlayerController(Prefab)
+    - 这个放到InputSystem Manager中
+    - PlayerInput
+    - PlayerController.cs
+      - PlayerPrefab(Player)
+## Demo复盘：道具系统与UI
+- Item
+  - enum ItemType
+  - GetSprite
+  - IsStackable
+- ItemAssets 道具资产
+  - pfItemWorld
+  - swordSprite
+  - healthPotionSprite
+  - ...
+- Inventory
+  - OnItemListChanged
+  - itemList
+  - useItemAction
+  - 
+  - Inventory(useItemAction)
+  - 
+  - AddItem
+  - RemoveItem
+  - UseItem
+  - GetItemList
+- Player
+  - UseItem
+  - new Inventory
+  - onTriggerEnter
+- ItemWorldSpawner
+  - public Item item;
+  - ItemInWorld.SpawnItemInWorld(this.pos,item)
+- ItemInWorld
+  - SpawnItemWorld
+    - Instantiate
+  - SetItem
+    - this.item = item
+  - GetItem
+  - DestroySelf
+- UI Inventory
+  - (SetPlayer)
+  - SetInventory
+  - Inventory_OnItemListChanged
+  - RefreshInventoryItems
+# ------------ 游戏算法 ------------
+##  柏林噪声地形生成
+> link: https://youtu.be/mXGM8-zzRiE?si=UEnj8RHJO55NUDL2
+> link(mainly)： https://www.youtube.com/watch?v=CSa5O6knuwI
+
+生成顺序：
+- 地形生成
+- 水域生成
+- 表面层：泥土、沙子
+- 特征与结构：村庄、数目
+
+地形生成算法演化：
+- 纯随机：地基高度+随机范围，没有连续性
+- 正弦曲线：地极高度+sin(x) * 倍率，通过改振幅和频率可以调整
+	- 南北方向和东西方向：圆滑山丘
+	- 没有随机性
+- Perlin Noise：梯度噪音的一种，可看作高度图，基于亮度
+	- 地基高度 + 柏林噪声 * 倍率：平滑
+- octaves（八度）：将多个不同尺度的噪声图叠加在一起
+	- 简单好用的技巧：第二个噪声的振幅是前面的一半，频率是前面的2倍
+	- 缺少戏剧性的显示特征：悬崖、河谷、高原
+- 特征添加：靠不同的噪音图
+	- 大陆性：高大陆性意味着高海拔，调整 Curve，来制作高原
+	- 侵蚀（Erosion）
+	- 山峰与山谷（Peaks&Valleys)
+- 3D 噪音：密度（Density）
+	- 正密度视为实体、负密度视为空气
+	- 密度向上减低，向下增加
+	- 压缩因子、高度偏移量
+	- 可以生成洞穴
+	- 转变思维：生成连续洞穴
+		- 噪音图黑白边界是空气
+- 生物群系：方块种类、动植物生成
+	- 增加噪音图：温度、湿度
+	- 通过表格，大陆性和侵蚀决定 生物群系组
+		- 再通过湿度温度表格，决定具体的生物群系
+	- 其他细节：温暖群系相互联系，而不是沙漠挨着雪地 

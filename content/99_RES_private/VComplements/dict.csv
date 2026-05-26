@@ -1,0 +1,31 @@
+displayed test text >>>inserted test text,description,alias
+
+note>>>> [!note]\n> ,
+info>>>> [!info]\n> ,
+tip>>>> [!tip]\n> ,
+todo>>>> [!todo]\n> ,
+abstract>>>> [!abstract]\n> ,
+summary>>>> [!summary]\n> ,
+tldr>>>> [!tldr]\n>,
+success>>>> [!success]\n> ,
+question>>>> [!question]\n> ,
+warning>>>> [!warning]\n> ,
+failure>>>> [!failure]\n> ,
+danger>>>> [!danger]\n> ,
+bug>>>> [!bug]\n> ,
+quote>>>> [!quote]\n>,
+example>>>> [!example]\n>,
+h1-heading1>>># ,
+h2-heading2>>>## ,
+h3-heading3>>>### ,
+h4-heading4>>>#### ,
+h5-heading5>>>##### ,
+h6-heading6>>>###### ,
+code>>>```<CARET>\n```
+latex>>>$$<CARET>$$
+latex-inline>>>$<CARET>$
+math>>>$$<CARET>$$
+math-inline>>>$<CARET>$
+table-2x3>>>| <CARET> |   |   |\n|---|---|---|\n|   |   |   |,
+table-2x2>>>| <CARET> |   |\n|---|---|\n|   |   |,
+table-3x3>>>| <CARET> |   |   |\n|---|---|---|\n|   |   |   |\n|   |   |   |,

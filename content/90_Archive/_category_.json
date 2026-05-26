@@ -1,0 +1,11 @@
+{
+  "label": "🗂️ 项目日志",
+  "position": 5,
+  "collapsible": true,
+  "collapsed": true,
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "项目日志"
+  }
+}
