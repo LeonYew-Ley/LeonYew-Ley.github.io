@@ -1,8 +1,405 @@
 @use "./base.scss";
 
-// 手写体字体应用（用于特殊元素）
-// .time {
-//     font-family: "", cursive !important;
-// }
+// ---------------------------------------------------------------------------
+// Claude Blog–inspired reading layout for Quartz
+// Reference: https://claude.com/blog
+// ---------------------------------------------------------------------------
 
-// put your custom CSS here!
+:root {
+  --read-max-width: 42rem;
+  --list-max-width: 52rem;
+  --content-font-size: 1.0625rem;
+  --content-line-height: 1.72;
+  --meta-font-size: 0.875rem;
+  --card-radius: 0.75rem;
+  --heading-track: -0.025em;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// ---------------------------------------------------------------------------
+// Center column width — article reading vs list pages
+// ---------------------------------------------------------------------------
+
+.page > #quartz-body .center {
+  .page-header,
+  article,
+  .page-footer,
+  > hr,
+  > .popover-hint {
+    max-width: var(--read-max-width);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  &:has(ul.section-ul) {
+    .page-header,
+    article,
+    .page-footer,
+    > hr,
+    > .popover-hint {
+      max-width: var(--list-max-width);
+    }
+  }
+}
+
+:root[reader-mode="on"] .page > #quartz-body .center {
+  .page-header,
+  article,
+  .page-footer,
+  > hr,
+  > .popover-hint {
+    max-width: 38rem;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Site title & article title (claude.com/blog hero hierarchy)
+// ---------------------------------------------------------------------------
+
+.page-title {
+  font-family: var(--headerFont);
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: var(--heading-track);
+
+  a {
+    font-weight: 600;
+    color: var(--dark);
+  }
+}
+
+header {
+  margin: 1.5rem 0 2rem;
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    color: var(--dark);
+  }
+}
+
+.article-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--dark);
+}
+
+// ---------------------------------------------------------------------------
+// Meta & breadcrumbs
+// ---------------------------------------------------------------------------
+
+.breadcrumb-container {
+  margin: 0 0 1.25rem;
+  gap: 0.35rem;
+  font-size: var(--meta-font-size);
+  color: var(--gray);
+
+  .breadcrumb-element p {
+    margin-left: 0.35rem;
+    color: var(--gray);
+  }
+
+  a {
+    font-weight: 400;
+    color: var(--gray);
+
+    &:hover {
+      color: var(--darkgray);
+    }
+  }
+}
+
+.content-meta {
+  margin: 0 0 1.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--lightgray);
+  font-size: var(--meta-font-size);
+  color: var(--gray);
+  letter-spacing: 0.01em;
+}
+
+// ---------------------------------------------------------------------------
+// Body typography
+// ---------------------------------------------------------------------------
+
+article .markdown-preview-view,
+article {
+  p,
+  ul,
+  ol,
+  li,
+  td,
+  blockquote {
+    font-size: var(--content-font-size);
+    line-height: var(--content-line-height);
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1.15em;
+  }
+
+  li {
+    margin-bottom: 0.35em;
+  }
+
+  li + li {
+    margin-top: 0.15em;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: var(--heading-track);
+  color: var(--dark);
+}
+
+article h1 {
+  font-size: clamp(1.875rem, 3vw, 2.25rem);
+  margin-top: 0;
+  margin-bottom: 0.85rem;
+}
+
+article h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  margin-top: 2.25rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--lightgray) 80%, transparent);
+}
+
+article h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.65rem;
+}
+
+article h4,
+article h5,
+article h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+// CJK: slightly open tracking for mixed Chinese/English notes
+article :is(p, li, td, blockquote):lang(zh),
+article :is(p, li, td, blockquote):lang(zh-CN),
+article :is(p, li, td, blockquote):lang(zh-TW) {
+  letter-spacing: 0.02em;
+}
+
+// ---------------------------------------------------------------------------
+// Links — lighter than Quartz default bold wikilinks
+// ---------------------------------------------------------------------------
+
+a {
+  font-weight: 500;
+}
+
+a.internal:not(.tag-link) {
+  font-weight: 500;
+  background-color: color-mix(in srgb, var(--highlight) 70%, transparent);
+}
+
+// ---------------------------------------------------------------------------
+// List / folder pages — card layout like claude.com/blog
+// ---------------------------------------------------------------------------
+
+.page-listing {
+  margin-top: 2rem;
+
+  > p {
+    font-size: var(--meta-font-size);
+    color: var(--gray);
+    margin-bottom: 1rem;
+  }
+}
+
+ul.section-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.875rem;
+}
+
+.page > #quartz-body .center ul.section-ul li.section-li {
+  margin-bottom: 0;
+  border: 1px solid var(--lightgray);
+  border-radius: var(--card-radius);
+  padding: 1.15rem 1.35rem;
+  background: color-mix(in srgb, var(--light) 96%, var(--dark) 4%);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    border-color: color-mix(in srgb, var(--gray) 55%, var(--lightgray));
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--dark) 5%, transparent);
+    transform: translateY(-1px);
+  }
+
+  > .section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .meta {
+    order: -1;
+    margin: 0;
+    opacity: 1;
+    font-size: var(--meta-font-size);
+    color: var(--gray);
+    letter-spacing: 0.02em;
+  }
+
+  .desc h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+
+    a.internal {
+      padding: 0;
+      background: none;
+      font-weight: 600;
+      color: var(--dark);
+
+      &:hover {
+        color: var(--secondary);
+      }
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.35rem 0 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 0;
+    }
+
+    a.tag-link {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--lightgray) 55%, transparent);
+      color: var(--darkgray);
+
+      &::before {
+        content: none;
+      }
+
+      &:hover {
+        background: var(--highlight);
+        color: var(--secondary);
+      }
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  .page > #quartz-body .center ul.section-ul li.section-li .tags {
+    display: flex;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Code, quotes, dividers
+// ---------------------------------------------------------------------------
+
+pre {
+  border-radius: 0.5rem;
+  border-color: color-mix(in srgb, var(--lightgray) 70%, var(--gray));
+  margin: 1.25rem 0;
+}
+
+code {
+  font-size: 0.875em;
+  background: color-mix(in srgb, var(--lightgray) 45%, transparent);
+}
+
+blockquote {
+  margin: 1.35rem 0;
+  padding: 0.25rem 0 0.25rem 1.15rem;
+  border-left-width: 2px;
+  border-left-color: color-mix(in srgb, var(--secondary) 35%, var(--lightgray));
+  color: color-mix(in srgb, var(--darkgray) 85%, var(--gray));
+}
+
+.page > #quartz-body .center > hr {
+  margin: 2.5rem auto;
+  opacity: 0.55;
+}
+
+// ---------------------------------------------------------------------------
+// Sidebars — quieter chrome, content-first
+// ---------------------------------------------------------------------------
+
+.page > #quartz-body .sidebar {
+  font-size: 0.9375rem;
+  color: var(--gray);
+
+  a {
+    font-weight: 400;
+  }
+}
+
+// Explorer toggle: global h2 typography (unlayered) overrides plugin styles in @layer quartz-base
+.page > #quartz-body .explorer > .explorer-toggle h2 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+// Explorer: collapsed state squishes to 1.2rem and clips the title button — keep toggle visible
+@media (min-width: 801px) {
+  .page > #quartz-body .explorer.collapsed {
+    flex: 0 0 auto;
+    overflow: visible;
+
+    > .explorer-content {
+      display: none;
+    }
+  }
+
+  .page > #quartz-body .explorer > .explorer-toggle {
+    flex-shrink: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Callouts — softer corners to match cards
+// ---------------------------------------------------------------------------
+
+.callout {
+  border-radius: 0.5rem;
+  margin: 1.25rem 0;
+}
