@@ -6,20 +6,24 @@ configuration:
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: zh-CN
+  locale: en-US
   baseUrl: leonyew.space
   ignorePatterns:
     - private
     - templates
     - .obsidian
+  # 以下目录仅本地 Obsidian 使用，不参与站点构建
     - "**/99_RES_private/**"
+    - "**/10_2025/**"
+    - "**/80_ACCUMULATION/**"
+    - README.md
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
     typography:
-      header: DM Serif Display
-      body: Bricolage Grotesque
-      code: JetBrains Mono
+      header: Schibsted Grotesk
+      body: Source Sans Pro
+      code: IBM Plex Mono
     colors:
       lightMode:
         light: "#faf8f8"
@@ -42,22 +46,10 @@ configuration:
         highlight: rgba(143, 159, 169, 0.15)
         textHighlight: "#b3aa0288"
 plugins:
-  - source: github:quartz-community/note-properties
-    enabled: true
-    options:
-      includeAll: false
-      includedProperties:
-        - description
-        - tags
-        - aliases
-      hidePropertiesView: true
-      delimiters: "---"
-      language: yaml
-    order: 5
   - source: github:quartz-community/created-modified-date
     enabled: true
     options:
-      defaultDateType: created
+      defaultDateType: modified
       priority:
         - frontmatter
         - git
@@ -74,17 +66,7 @@ plugins:
   - source: github:quartz-community/obsidian-flavored-markdown
     enabled: true
     options:
-      comments: true
-      highlight: true
-      wikilinks: true
-      callouts: true
-      mermaid: true
-      parseTags: true
-      parseArrows: true
-      parseBlockReferences: true
       enableInHtmlEmbed: false
-      enableYouTubeEmbed: true
-      enableVideoEmbed: true
       enableCheckbox: true
     order: 30
   - source: github:quartz-community/github-flavored-markdown
@@ -93,10 +75,6 @@ plugins:
   - source: github:quartz-community/table-of-contents
     enabled: true
     order: 50
-    layout:
-      position: right
-      priority: 40
-      display: desktop-only
   - source: github:quartz-community/crawl-links
     enabled: true
     options:
@@ -114,13 +92,17 @@ plugins:
     enabled: false
     order: 85
   - source: github:quartz-community/hard-line-breaks
-    enabled: true
+    enabled: false
     order: 90
+  - source: github:quartz-community/ox-hugo
+    enabled: false
+    order: 91
+  - source: github:quartz-community/roam
+    enabled: false
+    order: 92
   - source: github:quartz-community/remove-draft
     enabled: true
-  - source: github:quartz-community/unlisted-pages
-    enabled: false
-  - source: github:quartz-community/encrypted-pages
+  - source: github:quartz-community/explicit-publish
     enabled: false
   - source: github:quartz-community/alias-redirects
     enabled: true
@@ -142,8 +124,6 @@ plugins:
   - source: github:quartz-community/folder-page
     enabled: true
   - source: github:quartz-community/tag-page
-    enabled: true
-  - source: github:quartz-community/bases-page
     enabled: true
   - source: github:quartz-community/explorer
     enabled: true
@@ -179,7 +159,7 @@ plugins:
       position: beforeBody
       priority: 20
   - source: github:quartz-community/tag-list
-    enabled: true
+    enabled: false
     layout:
       position: beforeBody
       priority: 30
@@ -206,22 +186,73 @@ plugins:
       position: beforeBody
       priority: 5
       condition: not-index
-  - source: github:quartz-community/recent-notes
-    enabled: true
+  - source: github:quartz-community/comments
+    enabled: false
+    options:
+      provider: giscus
+      options: {}
     layout:
-      position: left
-      priority: 45
+      position: afterBody
+      priority: 10
   - source: github:quartz-community/footer
     enabled: true
     options:
       links:
-        GitHub: https://github.com/LeonYew-Ley/LeonYew-Ley.github.io
+        GitHub: https://github.com/jackyzha0/quartz
+        Discord Community: https://discord.gg/cRFFHYye7t
+  - source: github:quartz-community/recent-notes
+    enabled: false
   - source: github:quartz-community/spacer
     enabled: true
+    options: {}
+    order: 25
     layout:
       position: left
       priority: 25
       display: mobile-only
+  - source: github:quartz-community/bases-page
+    enabled: true
+    options: {}
+    order: 50
+  - source: github:quartz-community/note-properties
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties:
+        - description
+        - tags
+        - aliases
+      excludedProperties: []
+      hidePropertiesView: false
+      delimiters: ---
+      language: yaml
+    order: 5
+    layout:
+      position: beforeBody
+      priority: 15
+      display: all
+  - source: github:quartz-community/unlisted-pages
+    enabled: true
+    options: {}
+    order: 45
+  - source: github:quartz-community/encrypted-pages
+    enabled: true
+    options:
+      iterations: 600000
+      passwordField: password
+      unlistWhenEncrypted: false
+      outputPath: static/encryptedContentIndex.json
+    order: 900
+    layout:
+      position: body
+      priority: 100
+      display: all
+  - source: github:quartz-community/stacked-pages
+    enabled: false
+    layout:
+      position: afterBody
+      priority: 50
+      display: all
 layout:
   groups:
     toolbar:

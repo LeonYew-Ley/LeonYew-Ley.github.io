@@ -7,6 +7,8 @@ tsconfig.tsbuildinfo
 .obsidian
 .quartz-cache
 private/
+# 敏感笔记与 Obsidian 本地资源（仓库若公开，勿提交此目录）
+content/99_RES_private/
 .replit
 replit.nix
 .quartz/
